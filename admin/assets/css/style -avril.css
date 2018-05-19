@@ -1,0 +1,818 @@
+
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans|Indie+Flower|Roboto|Poppins|Libre+Baskerville');
+
+
+body{
+    color:#555F61;
+}
+
+
+
+.header-main > .row{
+    margin:0;
+}
+
+.header-main #logo img{
+    width:60%;
+}
+
+.header-main #slogan{
+    font-size:2rem;
+}
+
+/* logo social */
+.header-main .col-2 a:nth-child(1) i{color:hsl(221,44%,41%);}
+.header-main .col-2 a:nth-child(1) i:hover{color:hsl(221,44%,46%);transform:translateY(-5%)}
+.header-main .col-2 a:nth-child(2){color:hsl(203,89%,53%);}
+.header-main .col-2 a:nth-child(2) i:hover{color:hsl(203,89%,58%);transform:translateY(-5%)}
+.header-main .col-2 a:nth-child(3){color:hsl(0,100%,50%);}
+.header-main .col-2 a:nth-child(3) i:hover{color:hsl(0,100%,67%);transform:translateY(-5%)}
+
+
+.navbar{
+    z-index:9999;
+    transition: all 0.3s ease-out;
+    font-size:.8em !important;
+}
+
+
+/* gestion du responsive bugfixe */
+
+@media (max-width:767.5px)
+{
+    .navbar{
+        position: relative !important;
+        margin-top: -120px;
+        
+    }
+}
+
+@media (max-width:530px)
+{
+    .navbar{position: relative !important;
+        margin-top:-80px;   
+    }
+}
+/* gestion du responsive bugfixe */
+
+
+.affix {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+/* fixed to top styles */
+.affix.navbar {
+  background-color: rgba(255,255,255,1);
+    border-bottom:1px solid red;
+  }
+.affix.navbar .nav-item>a, 
+.affix.navbar .navbar-brand {
+    color: ;
+}
+ 
+.dropdown .nav-link::after{
+      font-weight: 900;
+        font-family: Font Awesome\ 5 Free;
+  content: "\00a0\00a0 \f150";
+    }
+
+
+
+@media (min-width: 768px) { 
+.navbar-custom .dropdown:hover>.dropdown-menu {
+  display: block;
+    visibility: visible;
+    opacity: 1;
+    animation: fade .5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+.navbar-custom {
+    background-color: white ;
+    font-size:.9rem;
+    font-family: Roboto;
+    
+}
+.navbar-custom .dropdown-menu {
+    margin-top:-3px;
+    font-size:.85rem;
+    font-family: Roboto;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    color: #333333;
+    
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(0,0,0,.7);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: black;
+}
+ }
+
+@media (max-width: 767px) {
+    
+    .navbar-toggler{
+        min-height:50px;    
+        min-width:50px;    
+    }
+    
+    .navbar-toggler-icon {
+    width:25px;    
+}
+    .dropdown-wombere{
+        text-align: center;
+    }
+    
+    .dropdown-toggle::after {
+    
+}
+   
+   
+}
+
+/* ANIMATED UP ARROW on xs */
+
+.navbar-light .navbar-toggler-icon {
+  transition:all .5s ease-out;  
+}
+.navbar-toggler[aria-expanded=true] .navbar-toggler-icon {
+  	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAAAAADRE4smAAAKl0lEQVR42u3d6ZNU1R3G8V8/dCNlhIgbglrZGMANCmKVMONMJ8ZQYLTK4p/1jVUpCLiVSzaC5VjlriVrZDIgzJYX8VWcpbvvuffce57v950y3D7085m+3S7QWwtyTjwFACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgBqvb/xrvxHR3wkAv+68v/R/f+eRQz1XAD23PzLms883+IFjOwFQfHff2uxHV38PgKK7/o8tv2R6AIBSWzs30vMxB4Ayu3R5xC88sBcABXZ2jK8dAqC4D35vj/XlM30AFNXND8f8CUd3AcB5/4inH3IBYPDvAhbG3z8uXuEVwOjT/3pN7eMVwHn/mP8GAM772wgQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewsQ+3sLEPt7CxD7ewuYBMAC+7dNwJWJf2pvje//Epra19grQBv3Hzb7cHMF3QXE/hO8bBYkQOzvLUDs7y1A7O8tQOzvLUDs7y1A7O8tQOzvLWBkAIvs/1MBsy0UcKMeAD+8x/7rPHstfA34+2IdAJbeYf+u3AXeW6kBwJvs3x0B59MDOMv+GwoYtu+5eSM1gI/YvxtH+bHB1bQA1r5j/81q313gYloA59i/a3eBP6cEcJn9O3cgLSUEcImnu3t3gTfTAfia/bt4F1hOBuAT9u/isS6kArDAE93VzwJpAHzA/t28C/wz3cdA9u/i4a6lAfAdT3HZd4GtAHzE/l29C8wXdwsYcsRx+qY0AEMO2fwtYIGntnABSnEf4Ylt5UFXCnoFuNahb6zWHPWrgt4DnOnSq2pbBHxaDIBrHbuxtuS4vVIA/OdMBALyvAlsxf5/ikCAMYAO7t8hAa0HsDiMQIAvgFsvRyDAF8Ct0xEIMAbQ4f3zC9iWAMDNvN//wwgETNxUAgD7c/4Cbp+OQMDk7UkA4FcZz3/tVAQCMr8H2JHx+/9MBAJ83wTePhWBgCpdTwLgVqbT3yhk/4wCZpMAyHT8G69FIKBaDyUBcG+Ws98paP+Wvw/Y8j1AL8f+JyMQULHDiQC80PzRbxa2fx4BuxMBaP5jwp1XIxBQtfuTfQycbvjkd09GIKByR5IBGDR78IU/RiCgciP/WWAjvMI3+hvi9l6JQED1fpcQgB5ocP+5CARU78lICCCebezciwXv36iAR5ICiJmmvv9fjkBAsw80EoD+oUaOrbkIBCTocCQGEHtWGjj27dkIBCRoeXdyAPFi/f9tmE5FICBFf4j0AKL2fzqn2QgENP8IasnB75jsX7+AMa+vdhx828kIBOS4ulpx8G0vRCAgy7XVhoP3rfavU8D4V1YLDt6fiUBApusq/8H99q9LwCRXVfaDO+5fj4CJrqncBx9Y7l+HgMmuqMwHH0xHICDj9ZT34L77pxYw6dWU9eDO+6cVMPG1lPPg2633Tylg8isp48G3n4hAQObrKN/B77PfP5WAKldRtoPf91v2TyOg0jWU6+Dsn0pAtSso08HZP5WAij9feR54J/snWrCqH2V56J3H2D3NhpXvIMrx4OyfasXq7yCU4eC72D/Rjgn+Rwo1f/DBURZPI2CulxvAJAd/eJq913kiJ/gfL4YpfvseNU330adYe71evdXAN18NAMY9xuMH2Xr9Tq+O9eXfJ/r3CL21ypf4+NvRv/b4PfU8e2c79Ml9w678a/Sv3f9YogdN8HtAHTgy+jN3D9/pm7w7Oj7yl55ItX+KV4CIuLA8ylcd3l3bc1fEK0BEzI/0R34//pt0j5gGQNx+d8svuVvn7/5UCoBYOd/Mp7/UALYksPJirZMUAyBi+cKmP3zzlbS/d2syABFr5zb8oV/+ouZJCgIQER9s+Gd275tK/Vj9hJaGsfzXxQzrF9exWL109ad/+4lf1/BY/bRXey4ilj6b/9mPJA7uYc3JPpw9HRGrX8xv/99frh54rK5HSngLyFlZt4BGqfHdZv5aw1MAAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAAAE8BAAgABAACAAGAAEAAIAAQAAgABAACAAGAAEAAIAAQAAgABAACAAGAAEAA8Op7AHg3BYDW9fMmH2w/AFrXkSYfbACA1tXjxsR7gKa6HwAt7GihtxsAjNguXpnMbwFLTT3QIQC0speaeqA9AGhn/WYe5hluAS1tppmHeRAAbW2qIGYAmKB9DTzGw30AtLdh/Q/xFB8D29x0AcQAUKHBgY4DA0DF9tYq4PigQAC9tbJ+PZcv1XbpE9sDAO3v6kX2twYQa+d4/2cNIOJs+kvueD4A0J3+/bfEF5zpBwA61ev3JrzY7sMRAOhYq39J9kF5NgIAXez8SoKLPHowAgBd7dMvKl7gmQcjANDprl+Y9L8WXD2xIwwqHUBERPzw5Vfj/CPv/hN7B+GSBQDa5D0uTwEACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQACg1vRfxFuOsr9dufMAAAAASUVORK5CYII=);
+    transform: rotate(360deg);
+    
+   
+}
+
+/* END ANIMATED UP ARROW */
+
+    /*scrollbar fun */
+    .scroll-progress-container {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  top:48.5px;
+    left: -1em;
+
+}
+
+.scroll-progress {
+    
+  width: 0px;
+  height: 3.5px;
+  background-image: linear-gradient(to right, #FE0000 0, #FE0000 33%, #FED42A 33%,#FED42A 66%, #39D33A 66%, #39D33A 100%);
+}
+    /*scrollbar fun end */
+/* Fin navbar */
+
+
+
+
+/* Main Intro start */
+
+
+
+.header-accueil{
+    padding-top:4.38em;
+    padding-bottom:4.38em;
+    font-family: 'Roboto', cursive;
+    
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    margin-left:0px;
+    margin-right:0px;
+    background-image: url('../img/Parallax_main1bis%20-%20Copie-min.png');
+    min-height:650px;
+    position: relative;
+    
+}
+
+.main-intro{
+    
+    background-image: linear-gradient(to right, rgba(254, 0, 0, .8) 0, rgba(254, 0, 0, .8) 33.33%, rgba(254, 212, 42, .8) 33.33%,rgba(254, 212, 42, .8) 66.66%, rgba(57, 211, 58, .8) 66.66%, rgba(57, 211, 58, .8) 100%);    
+}
+
+
+
+.main-intro h2{
+    position: relative;
+    color:white;
+    font-size: 3em;
+    font-weight: bolder;
+    text-shadow: 1px 2px 1px rgba(150, 150, 152, 1);
+}
+
+.main-intro p{ 
+    color:white;
+    font-size:1.25rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(150, 150, 152, 1);
+}
+
+
+
+@media (max-width: 767px) and (min-width:576px){
+    .main-intro h2{
+    font-size:1.4rem
+}
+    
+    .main-intro p{
+        font-size: 1.1rem;       
+    }
+}
+
+@media (max-width:575px){
+      .main-intro h2{
+    font-size:1.2rem
+}
+   
+    
+    .main-intro p{
+        font-size:.8rem;
+        
+    }
+}
+
+/* Main Intro end */
+
+
+
+/* Projet mainpagesction start */
+
+.projet-mainpage{
+    
+}
+
+.projet-mainpage > .w-100{
+    background-color: lightgray;
+}
+
+.projet-mainpage > .w-100 h2{
+    
+}
+
+@media (min-width: 1800px) {
+.projet-mainpage > .container {
+max-width: 80% !important;
+}
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .projet-mainpage > .container {
+        max-width:100% !important;
+    }
+}
+
+
+.projet-mainpage .card {
+  display: block; 
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
+    transition: box-shadow .25s; 
+}
+.projet-mainpage .card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    
+}
+.projet-mainpage .card:hover img{
+  transform: scale(1.05);  
+}
+
+.projet-mainpage .img-card {
+  
+ max-height:220px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  display:block;
+    overflow: hidden;
+}
+
+@media (min-width: 1200px){
+.projet-mainpage .img-card {
+    height:220px;
+ 
+}
+}
+
+.projet-mainpage .img-card{
+   /* background-image: linear-gradient(to bottom right, rgba(0, 0, 255,.7) 0, rgba(0, 0, 255,.7) 33.33%, rgba(255,255,255, .7) 33.33%,rgba(255,255,255, .7) 66.66%, rgba(255,0,0, .7) 66.66%, rgba(255,0,0, .7) 100%); */
+    background-image: linear-gradient(to bottom right, rgba(254, 0, 0, .8) 0, rgba(254, 0, 0, .8) 33.33%, rgba(254, 212, 42, .8) 33.33%,rgba(254, 212, 42, .8) 66.66%, rgba(57, 211, 58, .8) 66.66%, rgba(57, 211, 58, .8) 100%);
+}
+
+.projet-mainpage .img-card img{
+  
+  
+  transition: all .5s ease;
+} 
+.projet-mainpage .card-content {
+  padding:15px;
+  text-align:left;
+}
+.projet-mainpage .card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+    text-align: center;
+}
+.projet-mainpage .card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.projet-mainpage .card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.projet-mainpage .card-read-more a {
+  text-decoration: none !important;
+  padding:10px;
+  font-weight:600;
+  text-transform: uppercase
+}
+
+/* Projet mainpagesction end */
+
+
+
+
+
+/* Section onglet start */
+
+
+/*
+
+#news-image-one{
+    transform: scale(1.7)
+}
+
+#news-image-two{
+     transform: scale(1.2)
+}
+
+h2.retroshadow {
+  background-color:;
+  letter-spacing: .05em;
+  text-shadow: 2px 2px 0px #d5d5d5, 2px 2px 0px rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+}
+*/
+
+.news > .w-100{
+    background-color: lightgray;
+}
+
+.news > .w-100 img{
+    
+}
+
+#news-deco-one{
+    
+   
+    background: url(../img/african-instruments-background-music-158664.jpeg) no-repeat center fixed; 
+ background-size: cover;
+    
+}
+
+#news-deco-two{
+    
+    
+    background: url(../img/african-instruments-background-music-158664.jpeg) no-repeat center fixed; 
+ background-size: cover;
+    
+}
+
+.news .titre-news{
+    font-size:1.5rem;
+    font-weight: 700;
+    border-top:1px solid lightgray;
+}
+
+
+.news .titre-news{
+    font-size:1.5rem;
+    font-weight: 700;
+    border-top:1px solid lightgray;
+    margin-bottom:-2px;
+}
+
+.news small{ 
+    margin-bottom:10px;
+}
+
+
+/* Section onglet end */
+
+
+/* Section Presentation start */
+
+.partners {
+    background-color: rgba(155,155,155,.2)
+}
+
+.partners > .w-100{
+    background-color: lightgray;
+}
+
+.carousel{
+    min-height: 200px;
+}
+
+
+
+
+/* FOOTER start */
+
+.footer{
+   /* background-image: linear-gradient(to right, #FE0000 0, #FE0000 33.33%, #FED42A 33.33%,#FED42A 66.66%, #39D33A 66.66%, #39D33A 100%);*/
+    background-color: rgba(0,0,0,.9);
+    font-family:Roboto;
+    color:gainsboro;
+}
+
+
+/* scroll to top */
+a.btt {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  right: 30px;
+  bottom: 30px;
+  background: #ebebeb;
+    border:.1px solid gray;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  
+    transition: transform 0.3s ease-in-out;
+}
+
+a.btt > i {
+  color: #191717;
+  position: relative;
+  height: 100%;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+a.btt:hover{
+  transform: translatey(-10%);
+}
+/* FOOTER end */
+
+
+
+
+
+
+/*
+QUI SOMMES-NOUS
+.presentation .card{
+  border-radius: 0px;
+  border: none; 
+}
+
+.presentation .card-img {
+  text-align: center;
+  flex-shrink: 0; }
+
+@media (max-width: 767px) {
+    .presentation{
+        padding:50px 0;
+    }
+}*/
+/* Section Presentation end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* old card for news */
+
+
+/* old card new 
+.card-deck-custom >  div[class*='col-'] {
+  display: flex;
+  flex:1 0 auto;
+}
+
+.news .card{
+    font-family: Roboto;
+    font-size:1.1rem;
+    padding:0;
+}
+
+
+.news .card .card-header{
+    
+    background: yellow;
+    color:green;
+    
+}
+
+.news .card:nth-child(3n) .card-header{
+    background: #c00;
+    color:yellow
+}
+
+.news .card:nth-child(3n+1) .card-header{
+    background: #39D33A;
+    color:red;
+}
+
+
+.news .card{
+   /* background-image: linear-gradient(to right, #FE0000 0, #FE0000 33.33%, #FED42A 33.33%,#FED42A 66.66%, #39D33A 66.66%, #39D33A 100%) ;
+    border: 1px solid #F7F7F7, 
+    FOND DE LA CARTE
+}
+
+.news .card>img:hover{
+    cursor: zoom-in;
+}
+
+.news .card-header{
+    background-color:#F7F7F7;
+}
+
+
+.news .modal-content{
+    transform: scale(1.2);
+    margin-top:90px;
+}
+
+.news .modal-header{
+    border-bottom:.5px solid lightgrey;
+    
+}
+
+.news .modal-body>img{
+    transform:scale(1);
+}
+*/
+
+
+/* save html
+
+<test><div class="container py-5">
+          
+          <!--
+           <div class="row align-items-center my-3 mb-5" data-aos="zoom-out">
+              <div class="col-2"><img src="assets/img/drums-647220_640.jpg" alt="" class="img-fluid" id="news-image-one"></div>
+               <h2 class="col-8 mx-auto text-center retroshadow">Le coin des actualités</h2>
+               <div class="col-2"><img src="assets/img/flag-guinee.png" alt="" class="img-fluid" id="news-image-two"></div>
+           </div>-->
+            <div class="row text-center">
+               <div class="card-deck">
+                <div class="card card-inverse text-center col-md-4 mb-5" data-toggle="modal" data-target="#ref1">
+
+                   <div class="card-header">
+                       <p>Bientôt le Festival des Solidarités</p>
+                    </div>
+                   
+                    <!-- Image -->
+                    <img class="card-img-top img-fluid"  src="assets/img/Plaquette-festival.png" alt="News image">
+
+                    
+
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref1" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                   <p class="mx-auto my-auto"> Bientôt le Festival des Solidarités</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Plaquette-festival.png">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Plaquette-festival.png" download>Telecharger l'image</a>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card card-inverse text-center col-md-4 mb-5" data-toggle="modal" data-target="#ref2">
+
+                   <div class="card-header">
+                        Trouver ici le programme
+                    </div>
+                    <!-- Image -->
+                    <img class="card-img my-auto" src="assets/img/Plaquette-festival-verso.png" alt="Photo of sunset">
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref2" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"><p class="mx-auto my-auto">Trouver ici le programme</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Plaquette-festival-verso.png">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Plaquette-festival-verso.png" download>Telecharger l'image</a>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="card card-inverse text-center col-md-4 mb-5 d-flex justify-content-between" data-toggle="modal" data-target="#ref3">
+
+                   <div class="card-header">
+                        Ce week-end ?! c'est weekend causette autour d'un pot.<br>
+                        Venez nombreux et partageons !
+                    </div>
+                    
+                    <!-- Image -->
+                    <img class="card-img my-auto" src="assets/img/Locaux%20Wombere.jpg" alt="Locaux Wombere">
+
+                    
+                    
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref3" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <p class="mx-auto my-auto"> Ce week-end ?! c'est weekend causette autour d'un pot.<br>
+                        Venez nombreux et partageons !</p>
+                                   
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Locaux%20Wombere.jpg">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Locaux%20Wombere.jpg" download>Telecharger l'image</a>
+
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-sm-4 mb-5"> <div class="card card-inverse text-center " data-toggle="modal" data-target="#ref1">
+
+                   <div class="card-header">
+                       <p>Bientôt le Festival des Solidarités</p>
+                    </div>
+                   
+                    <!-- Image -->
+                    <img class="card-img-top img-fluid"  src="assets/img/Plaquette-festival.png" alt="News image">
+
+                    
+
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref1" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                   <p class="mx-auto my-auto"> Bientôt le Festival des Solidarités</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Plaquette-festival.png">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Plaquette-festival.png" download>Telecharger l'image</a>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+               <div class="col-sm-4 mb-5"> <div class="card card-inverse text-center " data-toggle="modal" data-target="#ref2">
+
+                   <div class="card-header">
+                        Trouver ici le programme
+                    </div>
+                    <!-- Image -->
+                    <img class="card-img my-auto" src="assets/img/Plaquette-festival-verso.png" alt="Photo of sunset">
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref2" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"><p class="mx-auto my-auto">Trouver ici le programme</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Plaquette-festival-verso.png">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Plaquette-festival-verso.png" download>Telecharger l'image</a>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   </div></div>
+                
+                
+               <div class="col-sm-4 mb-5"> <div class="card card-inverse text-center  d-flex justify-content-between" data-toggle="modal" data-target="#ref3">
+
+                   <div class="card-header">
+                        Ce week-end ?! c'est weekend causette autour d'un pot.<br>
+                        Venez nombreux et partageons !
+                    </div>
+                    
+                    <!-- Image -->
+                    <img class="card-img my-auto" src="assets/img/Locaux%20Wombere.jpg" alt="Locaux Wombere">
+
+                    
+                    
+                    <!-- The modal -->
+                    <div class="modal fade" id="ref3" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <p class="mx-auto my-auto"> Ce week-end ?! c'est weekend causette autour d'un pot.<br>
+                        Venez nombreux et partageons !</p>
+                                   
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    
+                                </div>
+                                <div class="modal-body">
+                                    <img class="img-fluid" class="zoom" alt="News image modal" src="assets/img/Locaux%20Wombere.jpg">
+                                </div>
+                                <a class="btn btn-primary" href="assets/img/Locaux%20Wombere.jpg" download>Telecharger l'image</a>
+
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                   </div></div>
+        </div>
+        </div></test>
+
+*/

@@ -1,0 +1,264 @@
+
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans|Indie+Flower|Roboto|Poppins');
+
+body{
+    color:#555F61;
+}
+
+
+.navbar{
+    z-index:9999;
+}
+ .dropdown .nav-link::after{
+      font-weight: 900;
+        font-family: Font Awesome\ 5 Free;
+  content: "\00a0\00a0 \f150";
+    }
+
+
+
+@media (min-width: 768px) { 
+.navbar-custom .dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.navbar-custom {
+    background-color: white ;
+    font-size:.9rem;
+    font-family: Roboto;
+    
+}
+.navbar-custom .dropdown-menu {
+    margin-top:-3px;
+    font-size:.85rem;
+    font-family: Roboto;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    color: #333333;
+    
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(0,0,0,.7);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: black;
+}
+ }
+
+@media (max-width: 767px) {
+    
+    .navbar-toggler{
+        min-height:50px;    
+        min-width:50px;    
+    }
+    
+    .navbar-toggler-icon {
+    width:25px;    
+}
+    .dropdown-wombere{
+        text-align: center;
+    }
+    
+    .dropdown-toggle::after {
+    
+}
+   
+   
+}
+
+/* Fin navbar */
+
+
+
+
+/* Main Intro start */
+
+
+
+.header{
+    padding-top:4.38em;
+    padding-bottom:4.38em;
+    font-family: 'Indie Flower', cursive;
+    
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    margin-left:0px;
+    margin-right:0px;
+    background-image: url('../img/Parallax_main1bis%20-%20Copie-min.png');
+    min-height:750px;
+    position: relative;
+    
+}
+
+.background{
+    background-color: #000;
+opacity: 0.55;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.main-intro{
+    background-color: rgba(255,255,255, 0);
+    padding: 50px;
+    border-radius:3px;
+    color:white;
+    z-index:3
+}
+
+.main-intro #main-logo{
+    width:30%;
+    margin-bottom: 1.5em;
+}
+
+.main-intro h1{
+    font-weight: bolder;
+}
+
+.main-intro p{
+    font-size:1.5rem;
+    letter-spacing: 1px;
+    margin:0 auto;
+    width:75%;
+}
+
+.main-intro span{
+    font-weight: 900;
+}
+
+@media (max-width: 767px) and (min-width:576px){
+    .main-intro p{
+        font-size: 1.1rem;
+        width:120%;
+        position: relative;
+        left:-2.9em;        
+    }
+}
+
+@media (max-width:575px){
+    .main-intro p{
+        font-size:.9rem;
+        width:100%;
+    }
+}
+
+/* Main Intro end */
+
+/* Section Presentation start */
+
+.presentation {
+  background-image: linear-gradient(to right, #FE0000 0, #FE0000 33.33%, #FED42A 33.33%,#FED42A 66.66%, #39D33A 66.66%, #39D33A 100%);
+    font-family:Roboto;
+  
+
+}
+
+.presentation .card{
+  border-radius: 0px;
+  border: none; 
+}
+
+.presentation .card-img {
+  text-align: center;
+  flex-shrink: 0; }
+
+@media (max-width: 767px) {
+    .presentation{
+        padding:50px 0;
+    }
+}
+/* Section Presentation end */
+
+
+
+/* Section onglet start */
+
+#news-image-one{
+    transform: scale(1.7)
+}
+
+#news-image-two{
+     transform: scale(1.2)
+}
+
+h2.retroshadow {
+  background-color:;
+  letter-spacing: .05em;
+  text-shadow: 2px 2px 0px #d5d5d5, 2px 2px 0px rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+}
+
+.card-deck-custom >  div[class*='col-'] {
+  display: flex;
+  flex:1 0 auto;
+}
+
+.news .card{
+    font-family: Roboto;
+    font-size:1.1rem;
+    padding:0;
+}
+
+
+.news .card .card-header{
+    
+    background: yellow;
+    color:green;
+    
+}
+
+.news .card:nth-child(3n) .card-header{
+    background: #c00;
+    color:yellow
+}
+
+.news .card:nth-child(3n+1) .card-header{
+    background: #39D33A;
+    color:red;
+}
+
+
+.news .card{
+   /* background-image: linear-gradient(to right, #FE0000 0, #FE0000 33.33%, #FED42A 33.33%,#FED42A 66.66%, #39D33A 66.66%, #39D33A 100%) ;
+    border: 1px solid #F7F7F7, 
+    FOND DE LA CARTE*/
+}
+
+.news .card>img:hover{
+    cursor: zoom-in;
+}
+
+.news .card-header{
+    background-color:#F7F7F7;
+}
+
+
+.news .modal-content{
+    transform: scale(1.2);
+    margin-top:90px;
+}
+
+.news .modal-header{
+    border-bottom:.5px solid lightgrey;
+    
+}
+
+.news .modal-body>img{
+    transform:scale(1);
+}
+
+
+/* Section onglet end */

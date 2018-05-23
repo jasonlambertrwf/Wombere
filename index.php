@@ -32,11 +32,11 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Accueil | Association Wombere</title>
 
 
     <?php
@@ -49,56 +49,13 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
 
     <?php
     require_once 'includes/header.php';
+    
+    require_once 'includes/slider.php';
+    
     ?>
 
 
-    <!-- Section SLIDER IMAGE start -->
-        <header>
-            <div class="container-fluid slider-container px-0">
-                <div id="carousel-mainpage" class="carousel carousel-fade slide carousel-fade" data-ride="carousel" data-interval="6000" data-hover="false">
-                    <div class="carousel-inner">
-
-                        <?php 
-                            $counter = 1;
-                            foreach ($slider_img as $img): 
-                        ?>
-
-                        <div class="carousel-item <?php if ($counter<=1) { echo 'active'; } ?>">
-                            <img class="d-block w-100" src="assets/img/slider/<?= $img->slider_img ?>" alt="First slide">
-                            <div class="carousel-caption  d-none d-md-block position-absolute" >
-                                <h5 class="h2 px-2"><?= $img->texte_slider_img ?></h5>
-
-                            </div>
-                        </div>
-
-                        <?php 
-                            $counter++;
-                            endforeach;
-                            unset($counter);
-                            $req_slider_img->closeCursor();
-                        ?>
-
-
-                    </div>
-                    <a class="carousel-control-prev" href="#carousel-mainpage" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-                    <a class="carousel-control-next" href="#carousel-mainpage" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
-                </div>
-            </div>
-        </header>
-  <!-- section presentation end -->
-   
-    
-                           <!-- hr flag start -->
-    <div class="w-100  hr-guinea-flag"></div>
-    <!-- HR FLAG end -->
-    
+  
     
     <!-- section PROJETS start -->
     <section class="projet-mainpage mb-5">
@@ -204,7 +161,62 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
         
     </section>
                        
-                       
+                       <div class="container">
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x560" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title that wraps to a new line</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div><div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div><div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div><div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div><div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div><div class="card">
+            <img class="card-img-top img-fluid" src="//placehold.it/800x400" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+       
+    </div>
+</div>
                        
  <!-- section Projets end -->
     

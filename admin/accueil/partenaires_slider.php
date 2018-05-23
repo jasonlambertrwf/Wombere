@@ -19,14 +19,18 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
 
 if($_POST){
 
-    $site = $_POST['site_partenaire'];
+    $site = htmlentities($_POST['site_partenaire']);
     $nom = htmlentities($_POST['nom_partenaire']);
     
 
 
 
     // upload image
-    if($_FILES['image']['size'] < 1048576){
+    if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["size"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -80,7 +84,7 @@ if($_POST){
 
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>Espace Admin - Affichage Slider Partenaires</title>
 
         <?php
     require_once '../includes/css-head.php';
@@ -90,24 +94,19 @@ if($_POST){
 
     <body>
        
-       <div class="row justify-content-between mx-1 fixed-top">
-           <a href="../admin.php" class="btn btn-success mt-1">Retour</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+     
+      <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('../admin.php');
+       
+        headerAdmin ('Espace de gestion de la page Accueil - Slider des partenaires');
+            
+       ?>
+    
         
-        
-        
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Slider des partenaires</h1>
-            </div>
-        </div>
-        </header>
+    
 
             <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag mt-5 mb-4" style="height:2em"></div>
@@ -150,29 +149,29 @@ if($_POST){
             <!-- Formulaire ajout -->
     
     <div class="container mb-5">
-                <h2 class="mb-4 text-center">Ajouter une présentation de projet:</h2>
+                <h2 class="mb-4 text-center">Ajouter un partenaire au slider:</h2>
 
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 
                    
                    <div class="form-group">
                         <label for="partenaire_image" class="text-danger">Image de l'actualité (requise) *</label>
-                        <input type="file" name="image" class="form-control-file" id="partenaire_image" required="required">
+                        <input type="file" name="image" class="form-control-file" id="partenaire_image" required>
                     </div>
                     
                         
                     <div class="form-group">
                         <label for="site_web">Adresse du site web du partenaire *</label>
-                        <input type="text" name="site_partenaire" class="form-control" id="site_web" placeholder="https://www.exemple.com" required="required">
+                        <input type="text" name="site_partenaire" class="form-control" id="site_web" placeholder="https://www.exemple.com" required>
                     </div>
                        
                        <div class="form-group">
                         <label for="nom">Nom du partenaire</label>
-                        <input type="text" name="nom_partenaire" class="form-control" id="nom" placeholder="Nom ou Abréviation du partenaire" required="required">
+                        <input type="text" name="nom_partenaire" class="form-control" id="nom" placeholder="Nom ou Abréviation du partenaire" required>
                     </div>
 
                     <div class="control text-center mt-5">
-                        <button type="submit" class="btn btn-success">Ajouter ce partenaire *</button>
+                        <button type="submit" class="btn btn-success">Ajouter ce partenaire</button>
                     </div>
                 </form>
 

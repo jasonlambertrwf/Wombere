@@ -27,7 +27,11 @@ if($_POST){
         
     
     
-    if($_FILES['image']['size'] < 100048576){
+    if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["image"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -43,13 +47,8 @@ if($_POST){
 
     move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
     // Insert it into our tracking along with the original name
-}
-        }else {
-  echo 'le fichier est trop grand';
-} 
-  
-        
-        $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image WHERE id_projet = :id_projet");
+          
+    $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image WHERE id_projet = :id_projet");
         $update = $req->execute([
             'projet_titre' => $titre,
             'projet_contenu'=> $contenu,
@@ -59,6 +58,20 @@ if($_POST){
         
     header('Location: projets_presentation.php');
     exit();
+}
+        }else {
+  $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu WHERE id_projet = :id_projet");
+        $update = $req->execute([
+            'projet_titre' => $titre,
+            'projet_contenu'=> $contenu,
+            'id_projet' => $id
+        ]);
+        
+    header('Location: projets_presentation.php');
+    exit();
+} 
+  
+        
     }
 }
 ?>
@@ -72,7 +85,7 @@ if($_POST){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Espace Admin - Modif presentation projet</title>
     
     <?php
     require_once '../includes/css-head.php';
@@ -81,24 +94,23 @@ if($_POST){
 </head>
 <body>
     
-    <div class="row justify-content-between mx-1 fixed-top">
-           <a href="projets_presentation.php" class="btn btn-success mt-1">Retour à la page précedente</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+    <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('projets_presentation.php');
+       
+        headerAdmin ('Espace de gestion de la page Accueil - Modification des projets');
+    
+       ?>
+          
+        
+       
+    
         
         
         
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Présentation des projets</h1>
-            </div>
-        </div>
-        </header>
+       
 
              <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag my-5" style="height:2em"></div>
@@ -111,7 +123,8 @@ if($_POST){
 
                 
 
-                   
+                   <div class="row">
+                   <div class="col-7 pr-5">
                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="titre" class="h4 text-success"> Titre de la présentation du projet *</label>
@@ -121,21 +134,28 @@ if($_POST){
 
                     <div class="form-group">
                         <label for="contenu" class="h4 text-success">Contenu de la présentation du projet *</label>
-                        <textarea name="contenu" class="form-control" id="contenu" rows="10"  required><?=  $projets["projet_contenu"] ?></textarea>
+                        <textarea name="contenu" class="form-control" id="contenu" rows="10"><?=  $projets["projet_contenu"] ?></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="image_projet" class="h4 text-danger">Image de l'actualité (requise) *</label>
+                        <label for="image_projet" class="h4 text-success">Image de l'actualité</label>
                         <input type="file" name="image" class="form-control-file" id="image_projet">
-                        <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $projets["projet_image"] ?>" alt="" class="img-fluid ">
+                        
                     </div>
 
                     <input type="hidden" name="id" class="form-control" id="titre" value="<?= $projets["id_projet"] ?>">
+                       
                     
                     <div class="control text-center mt-5">
                         <button type="submit" class="btn btn-success p-3">Modifier cette présentation de projet</button>
                     </div>
                     </form>
+                    </div>
+                    <div class="col-5 border-left pl-5 text-center">
+                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $projets["projet_image"] ?>" alt="" class="img-fluid ">
+                         
+                    </div>
+                    </div>
                     <?php 
                        
                         $req_projet->closeCursor();

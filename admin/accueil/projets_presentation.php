@@ -23,7 +23,11 @@ if($_POST){
 
 
     //upload image
-if($_FILES['image']['size'] < 1048576){
+if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["image"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -80,7 +84,7 @@ if($_FILES['image']['size'] < 1048576){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Espace Admin - Affichage Presentation Projet</title>
     
     <?php
     require_once '../includes/css-head.php';
@@ -89,25 +93,22 @@ if($_FILES['image']['size'] < 1048576){
 </head>
 <body>
     
-    <div class="row justify-content-between mx-1 fixed-top">
-           <a href="../admin.php" class="btn btn-success mt-1">Retour</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+    
+       <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('../admin.php');
+    
+        headerAdmin ('Espace de gestion de la page Accueil - Présentation des projets');
+    
+       
+       ?>
+          
+          
         
         
-        
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Présentation des projets</h1>
-            </div>
-        </div>
-        </header>
-
+       
               <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag my-5" style="height:2em"></div>
     <!-- HR FLAG end -->

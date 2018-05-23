@@ -24,10 +24,16 @@ if($_POST){
         $site = htmlentities($_POST['site']);
         $nom = htmlentities($_POST['nom']);
         $id = intval($_POST['id']);
-        
+
+    
+    
     
      // uplaod image
-    if($_FILES['image']['size'] < 1048576){
+    if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["image"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -42,29 +48,37 @@ if($_POST){
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
     move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/partenaires/'.$nom_image);
-    // Insert it into our tracking along with the original name
-}
-        }else {
-  echo 'le fichier est trop grand';
-} 
     
-    
-    
-    
-   //upload into db
-        
-        $req = $db->prepare("UPDATE wb_partenaires SET nom_partenaire = :nom_partenaire, img_partenaire = :img_partenaire, site_partenaire = :site_partenaire WHERE id_partenaire = :id_partenaire");
+          
+    $sql ="UPDATE wb_partenaires SET nom_partenaire = :nom_partenaire, img_partenaire = :img_partenaire, site_partenaire = :site_partenaire WHERE id_partenaire = :id_partenaire";
+          
+    $req = $db->prepare($sql);
         $update = $req->execute([
             'nom_partenaire'=>$nom,
             'img_partenaire'=>$nom_image,
             'site_partenaire'=>$site,
             'id_partenaire' => $id
         ]);
-        
-    header('Location: partenaires_slider.php');
+          
+          header('Location: partenaires_slider.php');
     exit();
-    }
 }
+        }else {
+    $sql ="UPDATE wb_partenaires SET nom_partenaire = :nom_partenaire, site_partenaire = :site_partenaire WHERE id_partenaire = :id_partenaire";
+        
+    $req = $db->prepare($sql);
+    $update = $req->execute([
+            'nom_partenaire'=>$nom,
+            'site_partenaire'=>$site,
+            'id_partenaire' => $id
+    ]);
+        
+     header('Location: partenaires_slider.php');
+    exit();
+    }    
+  }
+}
+
 ?>
 
 
@@ -74,7 +88,7 @@ if($_POST){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Espace Admin - Modif Slider Partenaires</title>
     
     <?php
     require_once '../includes/css-head.php';
@@ -83,24 +97,20 @@ if($_POST){
 </head>
 <body>
     
-    <div class="row justify-content-between mx-1 fixed-top">
-           <a href="partenaires_slider.php" class="btn btn-success mt-1">Retour à la page précedente</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+    
+    
+      <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('partenaires_slider.php');
+       
+        headerAdmin ('Espace de gestion de la page Accueil - Slider des partenaires');
+    
+       ?>
+    
         
-        
-        
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Slider des partenaires</h1>
-            </div>
-        </div>
-        </header>
+       
 
              <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag my-5" style="height:2em"></div>
@@ -118,21 +128,21 @@ if($_POST){
                    
                    
                     <div class="form-group">
-                        <label for="image" class="h4 text-danger">Image de l'actualité (requise) *</label>
-                        <input type="file" name="image" class="form-control-file" id="image"required="required"> 
+                        <label for="image" class="h4 text-success">Logo du partenaire</label>
+                        <input type="file" name="image" class="form-control-file" id="image" > 
                     </div>
                     
                    
                    
                     <div class="form-group mt-4">
                         <label for="site" class="h4 text-success"> Adresse du site web du partenaire *</label>
-                        <input type="text" name="site" class="form-control" id="site" value="<?= $partenaires["site_partenaire"] ?>" required="required">
+                        <input type="text" name="site" class="form-control" id="site" value="<?= $partenaires["site_partenaire"] ?>" required>
                     </div>
                        
                        
                        <div class="form-group mt-4">
                         <label for="titre" class="h4 text-success"> Nom du partenaire *</label>
-                        <input type="text" name="nom" class="form-control" id="titre" value="<?= $partenaires["nom_partenaire"] ?>" required="required">
+                        <input type="text" name="nom" class="form-control" id="titre" value="<?= $partenaires["nom_partenaire"] ?>" required>
                     </div>
 
                    

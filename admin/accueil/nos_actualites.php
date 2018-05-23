@@ -17,7 +17,11 @@ if($_POST){
     
 
 //upload image
-if($_FILES['image']['size'] < 1048576){
+if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["image"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -72,7 +76,7 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
 
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>Espace Admin - Affichage Actualités Accueil</title>
 
         <?php
     require_once '../includes/css-head.php';
@@ -82,24 +86,19 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
 
     <body>
        
-       <div class="row justify-content-between mx-1 fixed-top">
-           <a href="../admin.php" class="btn btn-success mt-1">Retour</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+       
+           <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('../admin.php');
         
-        
-        
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Nos Actualités</h1>
-            </div>
-        </div>
-        </header>
+        headerAdmin ('Espace de gestion de la page Accueil - Nos Actualités');
+       
+       ?>
+          
+      
+    
 
               <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag my-5" style="height:2em"></div>
@@ -109,11 +108,11 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
             <div class="container">
                 <h2>Ajouter une News :</h2>
 
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
 
                     <div class="form-group">
                         <label for="titre">Titre de l'actualité *</label>
-                        <input type="text" name="actu_titre" class="form-control" id="titre" placeholder="Titre" required="required">
+                        <input type="text" name="actu_titre" class="form-control" id="titre" placeholder="Titre" required>
                     </div>
 
 
@@ -124,7 +123,7 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
 
                     <div class="form-group">
                         <label for="image_actu" class="text-danger">Image de l'actualité (requise) *</label>
-                        <input type="file" name="image" class="form-control-file" id="image_actu" required="required">
+                        <input type="file" name="image" class="form-control-file input-file" id="image_actu" data-max-size="1048576" required>
                     </div>
 
 
@@ -186,28 +185,9 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
 
 
 <!-- script start -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="../assets/js/tinymce/tinymce.min.js"></script>
-    <script>
-	 tinymce.init({
-  selector: 'textarea',
-  language: 'fr_FR',
-  forced_root_block : false,
-  menubar: false,
-  plugins: [
-    'advlist autolink lists link charmap print preview anchor textcolor colorpicker charactercount',
-    'searchreplace visualblocks code fullscreen  lineheight',
-    'insertdatetime contextmenu paste code help '
-  ],
-  elementpath: false,
-  toolbar: 'preview | undo redo | insertdatetime | link charmap | formatselect | bold italic underline | forecolor  backcolor  textcolor colorpicker | lineheightselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-  content_css: ['../assets/css/style.css'],
-         
-         
-    
-});
-    </script>
+    <?php
+    require_once '../includes/footer_admin.php';
+    ?>
     
     </body>
 

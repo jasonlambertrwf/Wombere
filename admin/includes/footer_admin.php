@@ -12,12 +12,14 @@
   menubar: false,
   plugins: [
     'advlist autolink lists link charmap print preview anchor textcolor colorpicker charactercount',
-    'searchreplace visualblocks code fullscreen  lineheight',
-    'insertdatetime contextmenu paste code help '
+    'searchreplace visualblocks code fullscreen lineheight',
+    'insertdatetime media contextmenu paste code help '
   ],
   elementpath: false,
-  toolbar: 'preview | undo redo | insertdatetime | link charmap | formatselect | bold italic underline | forecolor  backcolor  textcolor colorpicker | lineheightselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+  toolbar: 'preview | undo redo | insertdatetime media | link charmap | formatselect | bold italic underline | forecolor  backcolor  textcolor colorpicker | lineheightselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
   content_css: ['../assets/css/style.css'],
+  media_live_embeds: true,
+        
          
          
     

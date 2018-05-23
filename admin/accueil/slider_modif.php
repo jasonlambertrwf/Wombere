@@ -27,7 +27,11 @@ if($_POST){
         
     
         // upload image
-      if($_FILES['image']['size'] < 1048576){
+      if ((($_FILES["image"]["type"] == "image/gif")
+    || ($_FILES["image"]["type"] == "image/jpeg")
+    || ($_FILES["image"]["type"] == "image/pjpeg") 
+    || ($_FILES["image"]["type"] == "image/png"))
+    && ($_FILES["image"]["size"] > 0) && ($_FILES["image"]["size"] < 1048576)){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
@@ -43,12 +47,7 @@ if($_POST){
 
     move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/slider/'.$nom_image);
     // Insert it into our tracking along with the original name
-}
-        }else {
-  echo 'le fichier est trop grand';
-} 
-        
-    
+          
     //update into db
         $req = $db->prepare("UPDATE wb_slider_img SET slider_img = :slider_img, texte_slider_img = :texte_slider_img, slider_page = :slider_page WHERE id_slider_img = :id_slider_img");
         $update = $req->execute([
@@ -60,6 +59,21 @@ if($_POST){
         
     header('Location: slider_accueil.php');
     exit();
+}
+        }else {
+  //update into db
+        $req = $db->prepare("UPDATE wb_slider_img SET texte_slider_img = :texte_slider_img, slider_page = :slider_page WHERE id_slider_img = :id_slider_img");
+        $update = $req->execute([
+            'texte_slider_img'=>$texte,
+            'slider_page'=>$page,
+            'id_slider_img' => $id
+        ]);
+        
+    header('Location: slider_accueil.php');
+    exit();
+} 
+        
+
     }
 }
 ?>
@@ -71,7 +85,7 @@ if($_POST){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Espace Admin - Modif Slider </title>
     
     <?php
     require_once '../includes/css-head.php';
@@ -80,24 +94,19 @@ if($_POST){
 </head>
 <body>
     
-    <div class="row justify-content-between mx-1 fixed-top">
-           <a href="projets_presentation.php" class="btn btn-success mt-1">Retour à la page précedente</a> 
-           <a href="../logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+    
+     <?php
+       
+        require_once '../includes/function.php';
+       
+        buttonReturn('slider_accueil.php');
+       
+        headerAdmin ('Espace de gestion de la page Accueil - Slider principal et Texte associé');
+    
+       ?>
+      
         
-        
-        
-        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Accueil - Slider principal et Texte associé</h1>
-            </div>
-        </div>
-        </header>
+      
 
              <!-- hr flag start -->
     <div class="w-100 hr-guinea-flag my-5" style="height:2em"></div>
@@ -115,7 +124,7 @@ if($_POST){
                    
                     <div class="form-group">
                        
-                        <label for="image_projet" class="h4 text-danger">Image de l'actualité (requise) *</label>
+                        <label for="image_projet" class="h4 text-success">Image de l'actualité</label>
                         <input type="file" name="image" class="form-control-file" id="image_projet">
                         
                         
@@ -138,7 +147,7 @@ if($_POST){
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
                          <p class="">Image originale</p>
-                         <img src="../../assets/img/slider/<?=  $slider["slider_img"] ?>" alt="" class="img-fluid w-75">
+                         <img src="../../assets/img/slider/<?=  $slider["slider_img"] ?>" alt="" class="img-fluid w-100">
                          
                     </div>
                     </div>

@@ -1,5 +1,10 @@
+/*************************************************
+            ADMIN SCRIPT
+*************************************************/
 
- // Script pour affichertailleréeele de l'image en espace admin
+
+
+ // Script pour afficher taille réeele de l'image en espace admin
 $( document ).ready(function() {
 $('img').not($('.logo')).hover(
     function(){
@@ -14,7 +19,7 @@ $('img').not($('.logo')).hover(
     position: 'absolute',
     top: '20%',
     left: '1em',
-    fontSize: '12px',
+    fontSize: '10px',
     whiteSpace: 'pre-wrap',
     zIndex: '500',
     border: '.2px solid gray',
@@ -29,6 +34,25 @@ $('img').not($('.logo')).hover(
     });    
     
 
+
+// VALIDATE INPUT FILE
+$(function(){
+    var fileInput = $('.input-file');
+    var maxSize = fileInput.data('max-size');
+    $('.upload-form').submit(function(e){
+        if(fileInput.get(0).files.length){
+            var fileSize = fileInput.get(0).files[0].size; // in bytes
+            if(fileSize>maxSize){
+                alert('Attention, la taille du fichier est superieur à 1MB! \n N\'oubliez pas de la compresser !');
+                return false;
+            }else{
+            }
+        }else{
+            return false;
+        }
+
+    });
+});
 
 
         // button bak to top

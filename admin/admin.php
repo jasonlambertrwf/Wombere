@@ -35,11 +35,34 @@ require __DIR__."/config/db.php";
         if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
         ?>
-    
-      <div class="row justify-content-end mx-1 fixed-top">
-           
-           <a href="logout.php" class="btn btn-warning mt-1 ">Se Deconnecter</a>     
-       </div>
+        
+        
+        
+          <div class="" style="position:fixed;left:10px; top:0; z-index:9999">
+           <p>
+  <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Mode d'emploi et Rappel
+  </button>
+</p>
+<div class="collapse text-white border border-white" id="collapseExample">
+  <div class="card card-body bg-dark">
+    <ul>
+        <li class="py-2"></li>
+        <li class="py-2">Pour uploader des fichiers PDF, rendez-vous sur <a href="">ce site</a> ou bien encore <a href="">ce site</a> pour ainsi uploader le PDF et ensuite insérer le lien dans un article au choix à l'aide de la balise "Lien" dans l'editeur de texte.</li>
+        <li class="py-2">Il est conseillé de compresser les images avant de les uploader. <a href="">Ici</a> ou bien <a href="">Ici</a> vous pouvez retrouver des sites internet qui permettent de le faire facilement.</li>
+        <li class="py-2">N'oubliez pas, de temps à autre, de nettoyer le contenu du dossier Image du serveur et supprimer les photos inutilisées grace au bouton "Nettoyer le dossier image" situé en bas de page</li>
+    </ul>
+  </div>
+</div>
+        </div> 
+         
+          <div class="" style="position:fixed;right:10px; top:0">
+        <a href="logout.php" class="btn btn-warning">Se Deconnecter</a>
+    </div>  
+       
+ 
+      
+      
       
        <header>
        <div class="text-center mt-3">
@@ -48,52 +71,80 @@ require __DIR__."/config/db.php";
         <h1 class="text-center my-3">Bienvenue sur l'espace d'administration <?= $_SESSION['login'] ?></h1>
         </header>
         
-        <div class="container">
-          <div class="row">
+        <hr>
+        
+        
+        <div class="container my-5">
+          <div class="row text-center">
                 <div class="col-12 my-5">
-                    <h2>Modifier la page d'accueil :</h2>
+                    <h2>Modifier la page d'accueil</h2>
+                    <small>( Selectionnez la section désirée ci-dessous )</small>
                 </div>
-                <div class="col-12 ">
-                    <a href="accueil/slider_accueil.php" class="btn btn-info">Modifier le slider d'image de la page d'accueil</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="accueil/slider_accueil.php" class="btn btn-info w-100 text-truncate">Slider d'images principal</a>
                 </div>
-                <div class="col-12 mt-4">
-                    <a href="accueil/projets_presentation.php" class="btn btn-info">Modifier le bandeau "Presentation des projets"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="accueil/projets_presentation.php" class="btn btn-info w-100 text-truncate">"Presentation des projets"</a>
                 </div>
-                <div class="col-12 mt-4">
-                    <a href="accueil/nos_actualites.php" class="btn btn-info">Modifier le bandeau "Nos Actualités"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="accueil/nos_actualites.php" class="btn btn-info w-100 text-truncate">"Nos Actualités"</a>
                 </div>
-                <div class="col-12 mt-4">
-                    <a href="accueil/partenaires_slider.php" class="btn btn-info">Modifier le bandeau "Nos Partenaires"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="accueil/partenaires_slider.php" class="btn btn-info w-100 text-truncate">"Nos Partenaires"</a>
                 </div>
             </div>     
         </div>
+   
         
-        
-        <!-- HR FLAG -->
-    <div class="w-100 my-5 hr-guinea-flag" style="height:10px"></div>
+     
     
-    
-    <div class="container-fluid my-5 py-5 bg-dark ">
-          <div class="row">
-                <div class="col-12 col-lg-4 text-white">
-                    <h2>Modifier la page d'accueil :</h2>
+    <div id="qui-sommes-nous" class="bg-dark">
+    <div class="container py-5 ">
+          <div class="row text-center justify-content-center">
+                <div class="col-12 text-white mb-5">
+                    <h2>Modifier la page "Qui sommes-nous?"</h2>
+                    <small>( Selectionnez la section désirée ci-dessous )</small>
                 </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#nos-valeurs" class="btn btn-light w-100 w-md-50">"Nos valeurs"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#nos-objectifs" class="btn btn-light w-100 w-md-50">"Nos objectifs"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#nos-moyens-d-action" class="btn btn-light w-100 w-md-50">"Nos moyens d'action"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#notre-histoire" class="btn btn-light w-100 w-md-50">"Notre histoire"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#l-equipe" class="btn btn-light w-100 w-md-50">L'Equipe</a>
                 
-                <div class="col-12 col-lg-8">
-                    <div class="row">
-                <div class="col-6 mt-4 mt-sm-1">
-                    <a href="accueil/slider_accueil.php" class="btn btn-info mw-100 text-truncate">Modifier le slider d'image de la page d'accueil</a>
+                
+                
+            </div>     
+        </div>
+        </div>
+    </div>
+        
+        
+        <div class="container mb-5">
+          <div class="row text-center">
+                <div class="col-12 my-5">
+                    <h2>Modifier la page "Wombere France"</h2>
+                    <small>( Selectionnez la section désirée ci-dessous )</small>
                 </div>
-                <div class="col-6 mt-4 mt-sm-1">
-                    <a href="accueil/projets_presentation.php" class="btn btn-info mw-100 text-truncate">Modifier le bandeau "Presentation des projets"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Cours"</a>
                 </div>
-                <div class="col-6 mt-4 mt-sm-1">
-                    <a href="accueil/nos_actualites.php" class="btn btn-info mw-100 text-truncate">Modifier le bandeau "Nos Actualités"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Ateliers en établissement spé"</a>
                 </div>
-                <div class="col-6 mt-4 mt-sm-1">
-                    <a href="accueil/partenaires_slider.php" class="btn btn-info mw-100 text-truncate">Modifier le bandeau "Nos Partenaires"</a>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Evenements"</a>
                 </div>
-                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Galerie de photos"</a>
                 </div>
             </div>     
         </div>

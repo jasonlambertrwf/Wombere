@@ -1,12 +1,13 @@
 <?php
 
 function buttonReturn ($chemin){
-    echo'<div style="position:fixed;left:10px; top:0; z-index:9999">';
-    echo'<a href="'.$chemin.'" class="btn btn-success mt-1">Retour</a>';
+    echo'<div style="position:fixed;left:5px; top:5px; z-index:20">';
+    echo'<a href="'.$chemin.'" class="btn btn-success">Retour</a>';
     echo'</div>';
-    echo'<div style="position:fixed;right:10px; top:0; z-index:9999">';
-    echo'<a href="../logout.php" class="btn btn-warning mt-1">Se Deconnecter</a>';
-    echo'</div>';      
+    echo'<div style="position:fixed;right:5px; top:5px; z-index:20">';
+    echo'<a href="../logout.php" class="btn btn-warning">Se Deconnecter</a>';
+    echo'</div>';
+    unset($chemin);
 }
 
 
@@ -21,7 +22,7 @@ function headerAdmin ($nom){
     echo'</div>';
     echo'</div>';
     echo'</header>';
-            
+    unset($nom);
 }
 
 ?>

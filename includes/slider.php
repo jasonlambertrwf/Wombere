@@ -6,9 +6,8 @@ $req_slider_img=$db->query("SELECT slider_img, texte_slider_img FROM wb_slider_i
 
     <!-- Section SLIDER IMAGE start -->
         <header>
-           <h1 class="d-none">Wombere Association de solidarité entre la France et la Guinée, autour de la musique et du handicap</h1>
             <div class="container-fluid slider-container mw-100 px-0">
-                <div id="carousel-mainpage" class="carousel carousel-fade slide carousel-fade" data-ride="carousel" data-interval="6000" data-hover="false">
+                <div id="carousel-mainpage" class="carousel carousel-fade slide carousel-fade" data-ride="carousel" data-interval="6000" data-pause="false">
                     <div class="carousel-inner">
 
                         <?php 
@@ -18,8 +17,8 @@ $req_slider_img=$db->query("SELECT slider_img, texte_slider_img FROM wb_slider_i
 
                         <div class="carousel-item <?php if ($counter<=1) { echo 'active'; } ?>">
                             <img class="d-block w-100" src="assets/img/slider/<?= $img->slider_img ?>" alt="First slide">
-                            <div class="carousel-caption  d-none d-md-block position-absolute" >
-                                <h5 class="h2 px-2"><?= $img->texte_slider_img ?></h5>
+                            <div class="carousel-caption d-none d-md-block position-absolute" >
+                                <p class="h2 px-2"><?= $img->texte_slider_img ?></p>
 
                             </div>
                         </div>

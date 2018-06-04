@@ -38,12 +38,12 @@ if($_POST){
       if (!empty($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
           
     
-          // Be sure we're dealing with an upload
+          // Be sure it's an upload
             if (is_uploaded_file($_FILES['image']['tmp_name']) === false) {
                     throw new \Exception('Error on upload: Invalid file definition');
             }
 
-    // Rename the uploaded file
+    // Rename image
     $uploadName = $_FILES['image']['name'];
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
@@ -97,7 +97,7 @@ if($_POST){
        
         require_once '../includes/function.php';
        
-       buttonReturn('../admin.php#equipe');
+       buttonReturn('../admin.php#qui-sommes-nous');
        
        headerAdmin ('Espace de gestion de la page Qui-sommes-nous?');
        
@@ -108,15 +108,15 @@ if($_POST){
         
         
          
-                           <!-- ANCHOR INSIDE hr flag start -->
-    <div id="nos-valeurs" class="w-100  hr-guinea-flag"></div>
+                           <!-- hr flag start -->
+    <div class="w-100  hr-guinea-flag"><p class="p-3 h3 text-center">&darr; Nos Valeurs &darr;</p></div>
     <!-- HR FLAG end -->
     
        
        
        
-       <!-- NOS VALEURS  -->
-    <section class="style_simple my-5">
+       <!-- NOS VALEURS start -->
+    <section id="nos-valeurs" class="style_simple my-5">
       
                   <?php
                     $titre = "nos valeurs";
@@ -158,16 +158,16 @@ if($_POST){
                     ?>
                     
     </section>
+       <!-- NOS VALEURS end -->
        
        
-       
-                           <!-- ANCHOR INSIDE hr flag start -->
-    <div id="nos-objectifs" class="w-100  hr-guinea-flag"></div>
+                           <!-- hr flag start -->
+    <div class="w-100  hr-guinea-flag"><p class="p-3 h3 text-center">&darr; Nos Objectifs &darr;</p></div>
     <!-- HR FLAG end -->
     
        
-       <!-- NOS OBJECTIFS -->
-       <section class="style_simple mt-5">
+       <!-- NOS OBJECTIFS start -->
+       <section id="nos-objectifs" class="style_simple my-5">
        <?php
                     $titre = "nos objectifs";
                     $req->bindParam(':titre_section', $titre);
@@ -203,16 +203,16 @@ if($_POST){
                     $req->closeCursor();
                     ?>
     </section>
-
+        <!-- NOS OBJECTIFS end -->
    
     
-                           <!-- ANCHOR INSIDE hr flag  start -->
-    <div id="nos-moyens-d-action" class="w-100  hr-guinea-flag"></div>
+                           <!-- hr flag  start -->
+    <div class="w-100  hr-guinea-flag"><p class="p-3 h3 text-center">&darr; Nos Moyens d'Action &darr;</p></div>
     <!-- HR FLAG end -->
     
     
-     <!-- Nos moyens d'actions -->
-    <section class="style_complexe my-5">
+     <!-- NOS MOYENS D'ACTION start -->
+    <section id="nos-moyens-d-action" class="style_complexe my-5">
       <?php
                     $titre = "nos moyens d'action";
                     $req->bindParam(':titre_section', $titre);
@@ -246,7 +246,7 @@ if($_POST){
                         <h3 class="h2 pt-4 pt-lg-0 text-danger"><?= $row->titre_ternaire; ?></h3>
                         <p><?= $row->texte_ternaire; ?></p>
                     </div>
-                     <div class="col-12 text-center align-self-end mb-3">
+                     <div class="col-12 text-center align-self-end my-3">
                             <a href="qui-sommes-nous-modif-section.php?p=<?= $row->id_section ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
                         </div>
                 </div>
@@ -262,16 +262,16 @@ if($_POST){
                     ?>
 
     </section>
+    <!-- NOS MOYENS D'ACTION end -->
     
     
     
-    
-                           <!-- ANCHOR INSIDE hr flag start -->
-    <div  id="notre-histoire" class="w-100  hr-guinea-flag"></div>
+                           <!-- hr flag start -->
+    <div class="w-100  hr-guinea-flag"><p class="p-3 h3 text-center">&darr; Notre Histoire &darr;</p></div>
     <!-- HR FLAG end -->
     
     
-        <!-- Notre histoire -->
+        <!-- NOTRE HISTOIRE start -->
         
         <?php
                     $titre = "notre histoire";
@@ -280,7 +280,7 @@ if($_POST){
                     while($row = $req->fetch(PDO::FETCH_OBJ)) {
                     ?>
                     
-    <section class="style_image_bgc ">
+    <section id="notre-histoire" class="style_image_bgc ">
        <div class="container-fluid">
         <div class=" main row" style="background-image: url(../../assets/img/<?= $row->img_main; ?>); background-size:cover; ">
             <div class="col-12 col-lg-5 offset-lg-1 text p-sm-5 text-justify bg-white">
@@ -295,7 +295,7 @@ if($_POST){
         
     </section>
     
-    <section class="style_image_bgc mt-2">
+    <section class="style_image_bgc mt-2 mb-5">
        <div class="container-fluid">
         <div class=" main row" style="background-image: url(../../assets/img/<?= $row->img_secondaire; ?>); background-size:cover;">
             <div class="col-12 col-lg-5 offset-lg-6 text p-sm-5 text-justify bg-white">
@@ -307,7 +307,7 @@ if($_POST){
         </div>
 
       </div>
-        <div class="col-12 text-center align-self-end mb-3">
+        <div class="col-12 text-center align-self-end my-5">
                             <a href="qui-sommes-nous-modif-section.php?p=<?= $row->id_section ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
                 </div>
     </section>
@@ -319,31 +319,32 @@ if($_POST){
                     unset($titre);
                     $req->closeCursor();
                     ?>
+                    
+        <!-- NOTRE HISTOIRE end -->
     
     
-    
-                           <!-- ANCHOR INSIDE hr flag start -->
-    <div id="l-equipe" class="w-100  hr-guinea-flag"></div>
+                           <!-- hr flag start -->
+    <div class="w-100  hr-guinea-flag"><p class="p-3 h3 text-center">&darr; L'Equipe &darr;</p></div>
     <!-- HR FLAG end -->
     
     
     
-     <!-- 3eme section l'equipe -->
+     <!-- L'EQUIPE start -->
     
-<section id="equipe" class="equipe my-5">
+<section id="l-equipe" class="equipe my-5">
    <h2  class="h1 text-center text-uppercase mb-5">L'équipe de wombere</h2>
    
    <!-- AJOUT MEMBRE start -->
-<div class="col-12 text-center">
+<div class="text-center">
     <!-- The Modal -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-lg btn-success px-5 py-3" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-lg btn-success px-5 py-3" data-toggle="modal" data-target="#modal_form">
   Ajouter un membre !
 </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Formulaire d'ajout d'un membre</h5>
@@ -389,7 +390,7 @@ if($_POST){
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer/Annuler</button>
                 </div>
             </div>
         </div>
@@ -509,7 +510,7 @@ if($_POST){
     </div>
 </section>
 
- 
+     <!-- L'EQUIPE end -->
       
        
        

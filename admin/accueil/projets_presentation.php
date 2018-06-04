@@ -19,6 +19,7 @@ if($_POST){
 
     $titre = htmlentities($_POST['projet_titre']);
     $contenu= stripslashes($_POST['contenu']);
+    $redirect= htmlentities($_POST['redirection']);
     
 
 
@@ -49,13 +50,14 @@ if ((($_FILES["image"]["type"] == "image/gif")
 } 
     
     
-    // update into db
-       $req=$db->prepare('INSERT INTO wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image'); 
+    // insert into db
+       $req=$db->prepare('INSERT INTO wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image, projet_redirection = :projet_redirection'); 
         
         $req->execute([
             'projet_titre'=>$titre,
             'projet_contenu'=>$contenu,
-            'projet_image'=>$nom_image,  
+            'projet_image'=>$nom_image,
+            'projet_redirection'=>$redirect
             ]);
 
         header("Location: projets_presentation.php");
@@ -170,24 +172,28 @@ if ((($_FILES["image"]["type"] == "image/gif")
     <div class="container mb-5">
                 <h2 class="mb-4 text-center">Ajouter une présentation de projet:</h2>
 
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
 
                     <div class="form-group">
-                        <label for="titre">Titre de la présentation de projet *</label>
-                        <input type="text" name="projet_titre" class="form-control" id="titre" placeholder="Titre" required="required">
+                        <label for="titre" class="h5 text-success">Titre de la présentation de projet *</label>
+                        <input type="text" name="projet_titre" class="form-control" id="titre" placeholder="Titre" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="contenus">Contenu de l'actualité *</label>
+                        <label for="contenus" class="h5 text-success">Contenu de l'actualité *</label>
                         <textarea name="contenu" class="form-control" id="contenus" rows="10" placeholder="Contenu de l'actualité" value=""></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="projet_image" class="h5 text-danger">Image de l'actualité (requise) *</label>
-                        <input type="file" name="image" class="form-control-file" id="projet_image" required="required">
+                        <input type="file" name="image" class="form-control-file input-file" id="projet_image"  data-max-size="1048576" required>
                     </div>
-
+                    
+                    <div class="form-group">
+                        <label for="redirect" class="h5 text-success">Lien de redirection vers la section voulue <br>(Bouton "Lire plus") *</label>
+                        <input type="text" name="redirection" class="form-control" id="redirect" placeholder="exemple : https://www.wombere.com/handicapable#en-france" required>
+                    </div>
 
                     <div class="control text-center mt-5">
                         <button type="submit" class="btn btn-success">Ajouter la présentation de projet à la page d'accueil</button>

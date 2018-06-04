@@ -111,18 +111,18 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
 
                     <div class="form-group">
-                        <label for="titre">Titre de l'actualité *</label>
+                        <label for="titre" class="h5 text-success">Titre de l'actualité *</label>
                         <input type="text" name="actu_titre" class="form-control" id="titre" placeholder="Titre" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="contenu">Contenu de l'actualité *</label>
+                        <label for="contenu" class="h5 text-success">Contenu de l'actualité *</label>
                         <textarea name="actu_contenu" class="form-control" id="contenu" rows="10" placeholder="Contenu de l'actualité"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="image_actu" class="text-danger">Image de l'actualité (requise) *</label>
+                        <label for="image_actu" class="h5 text-danger">Image de l'actualité (requise) *</label>
                         <input type="file" name="image" class="form-control-file input-file" id="image_actu" data-max-size="1048576" required>
                     </div>
 

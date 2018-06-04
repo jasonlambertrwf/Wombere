@@ -4,7 +4,7 @@
 
 
 
- // Script pour afficher taille réeele de l'image en espace admin
+ /* Script pour afficher taille réeele de l'image en espace admin // BUG A REGLER
 $( document ).ready(function() {
 $('img').not($('.logo')).hover(
     function(){
@@ -32,27 +32,26 @@ $('img').not($('.logo')).hover(
     });
     
     });    
-    
+    */
 
 
 // VALIDATE INPUT FILE
 $(function(){
     var fileInput = $('.input-file');
     var maxSize = fileInput.data('max-size');
+    var maxSizeMb = Math.round((maxSize/1024)/1000);
     $('.upload-form').submit(function(e){
         if(fileInput.get(0).files.length){
             var fileSize = fileInput.get(0).files[0].size; // in bytes
             if(fileSize>maxSize){
-                alert('Attention, la taille du fichier est superieur à 1MB! \n N\'oubliez pas de la compresser !');
+                alert('La taille du fichier est superieure à ' + maxSizeMb + ' Mb');
                 return false;
             }else{
             }
-        }else{
-            return false;
         }
-
     });
 });
+
 
 
         // button bak to top

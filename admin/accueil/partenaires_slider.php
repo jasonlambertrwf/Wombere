@@ -151,22 +151,22 @@ if($_POST){
     <div class="container mb-5">
                 <h2 class="mb-4 text-center">Ajouter un partenaire au slider:</h2>
 
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
 
                    
                    <div class="form-group">
-                        <label for="partenaire_image" class="text-danger">Image de l'actualité (requise) *</label>
-                        <input type="file" name="image" class="form-control-file" id="partenaire_image" required>
+                        <label for="partenaire_image" class="h5 text-danger">Image de l'actualité (requise) *</label>
+                        <input type="file" name="image" class="form-control-file input-file" id="partenaire_image" data-max-size="1048576" required>
                     </div>
                     
                         
                     <div class="form-group">
-                        <label for="site_web">Adresse du site web du partenaire *</label>
+                        <label for="site_web" class="h5 text-success">Adresse du site web du partenaire *</label>
                         <input type="text" name="site_partenaire" class="form-control" id="site_web" placeholder="https://www.exemple.com" required>
                     </div>
                        
                        <div class="form-group">
-                        <label for="nom">Nom du partenaire</label>
+                        <label for="nom" class="h5 text-success">Nom du partenaire</label>
                         <input type="text" name="nom_partenaire" class="form-control" id="nom" placeholder="Nom ou Abréviation du partenaire" required>
                     </div>
 
@@ -184,9 +184,9 @@ if($_POST){
     
 
 
-<!-- script start -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
+<?php
+    require_once '../includes/footer_admin.php';
+    ?>
     
     </body>
 

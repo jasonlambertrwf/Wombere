@@ -8,13 +8,13 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 require '../config/db.php';
 
 
-$id_projet = intval($_GET['p']);
+$id_festisol = intval($_GET['p']);
 
 
 
 // affichage des projets - PRESENTATION
-$req_projet=$db->query("SELECT * FROM wb_projet_presentation WHERE id_projet = $id_projet");
-	$projets=$req_projet->fetch();
+$req=$db->query("SELECT * FROM wb_festisol WHERE id_festisol = $id_festisol");
+	$festisol=$req->fetch();
     
     
     
@@ -23,7 +23,8 @@ if($_POST){
        
         $titre = htmlentities($_POST['titre']);
         $contenu = stripslashes($_POST['contenu']);
-        $redirect = htmlentities($_POST['redirection']);
+        $annee = htmlentities($_POST['annee']);
+        $lien = htmlentities($_POST['lien']);
         $id = intval($_POST['id']);
         
     
@@ -49,28 +50,30 @@ if($_POST){
     move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
     // Insert it into our tracking along with the original name
           
-    $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image, projet_redirection = :projet_redirection WHERE id_projet = :id_projet");
+    $req = $db->prepare("UPDATE wb_festisol SET titre_festisol = :titre_festisol, contenu_festisol = :contenu_festisol, img_festisol = :img_festisol, annee_festisol = :annee_festisol, lien_site_festisol = :lien_site_festisol WHERE id_festisol = :id_festisol");
         $update = $req->execute([
-            'projet_titre' => $titre,
-            'projet_contenu'=> $contenu,
-            'projet_image'=> $nom_image,
-            'projet_redirection'=> $redirect,
-            'id_projet' => $id
+            'titre_festisol' => $titre,
+            'contenu_festisol'=> $contenu,
+            'img_festisol'=> $nom_image,
+            'annee_festisol'=> $annee,
+            'lien_site_festisol'=>$lien,
+            'id_festisol' => $id
         ]);
         
-    header('Location: projets_presentation.php');
+    header('Location: festisol.php');
     exit();
 }
         }else {
-  $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_redirection = :projet_redirection WHERE id_projet = :id_projet");
+  $req = $db->prepare("UPDATE wb_festisol SET titre_festisol = :titre_festisol, contenu_festisol = :contenu_festisol, annee_festisol = :annee_festisol, lien_site_festisol = :lien_site_festisol WHERE id_festisol = :id_festisol");
         $update = $req->execute([
-            'projet_titre' => $titre,
-            'projet_contenu'=> $contenu,
-            'projet_redirection'=> $redirect,
-            'id_projet' => $id
+            'titre_festisol' => $titre,
+            'contenu_festisol'=> $contenu,
+            'annee_festisol'=> $annee,
+            'lien_site_festisol'=>$lien,
+            'id_festisol' => $id
         ]);
         
-    header('Location: projets_presentation.php');
+    header('Location: festisol.php');
     exit();
 } 
   
@@ -122,7 +125,7 @@ if($_POST){
     
     
    <div class="container">
-                <h2 class="text-center my-5">Modifier la présentation de projet ayant pour titre : <?=  $projets["projet_titre"] ?> </h2>
+                <h2 class="text-center my-5">Modifier la présentation du Festisol de l'année <?=  $festisol["annee_festisol"] ?> </h2>
 
                 
 
@@ -130,27 +133,33 @@ if($_POST){
                    <div class="col-7 pr-5">
                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
                     <div class="form-group">
-                        <label for="titre" class="h4 text-success"> Titre de la présentation du projet *</label>
-                        <input type="text" name="titre" class="form-control" id="titre" value="<?= $projets["projet_titre"] ?>" required>
+                        <label for="titre" class="h4 text-success"> Titre de la présentation *</label>
+                        <input type="text" name="titre" class="form-control" id="titre" value="<?= $festisol["titre_festisol"] ?>" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="contenu" class="h4 text-success">Contenu de la présentation du projet *</label>
-                        <textarea name="contenu" class="form-control" id="contenu" rows="10"><?=  $projets["projet_contenu"] ?></textarea>
+                        <label for="contenu" class="h4 text-success">Contenu de la présentation *</label>
+                        <textarea name="contenu" class="form-control" id="contenu" rows="10"><?=  $festisol["contenu_festisol"] ?></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="image_projet" class="h4 text-success">Image de la présentation du projet</label>
-                        <input type="file" name="image" class="form-control-file input-file" id="image_projet"  data-max-size="1048576">
+                        <label for="image" class="h4 text-success">Image de la présentation</label>
+                        <input type="file" name="image" class="form-control-file input-file" id="image"  data-max-size="1048576">
                     </div>
                     
                     <div class="form-group">
-                        <label for="redirect" class="h4 text-success">Lien de redirection ver la section voulue <br> (Bouton "Lire plus") *</label>
-                        <input type="text" name="redirection" class="form-control" id="redirect" value="<?= $projets["projet_redirection"] ?>" required>
+                        <label for="annee" class="h4 text-success">Année du festisol *</label>
+                        <input type="text" name="annee" class="form-control" id="annee" value="<?= $festisol["annee_festisol"] ?>" required>
+                    </div>
+                       
+                       
+                    <div class="form-group">
+                        <label for="lien" class="h4 text-success"> Lien menant au site officiel de Festisol *</label>
+                        <input type="text" name="lien" class="form-control" id="lien" value="<?= $festisol["lien_site_festisol"] ?>" required>
                     </div>
 
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $projets["id_projet"] ?>">
+                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $festisol["id_festisol"] ?>">
                        
                     
                     <div class="control text-center mt-5">
@@ -159,13 +168,13 @@ if($_POST){
                     </form>
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
-                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $projets["projet_image"] ?>" alt="" class="img-fluid ">
+                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $festisol["img_festisol"] ?>" alt="" class="img-fluid ">
                          
                     </div>
                     </div>
                     <?php 
                        
-                        $req_projet->closeCursor();
+                        $req->closeCursor();
                                
                                
                     ?>

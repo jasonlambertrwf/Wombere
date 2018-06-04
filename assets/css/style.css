@@ -18,15 +18,16 @@ html { font-size: 1rem;
 }
 
 body {
+    position: relative;
     color: #555F61;
     line-height: 1.61803398875;
     max-width: 1920px;
     margin:0 auto;
-    
+    overflow-x: hidden;
 }
 
 
-/* Font-Family Style start */
+/* Font-Family | Main color Style start */
 
 h1, h2, h3, h4, h5, h6{
     font-family:'Fresca' !important
@@ -36,11 +37,32 @@ p, li:not(.nav-item) {
     font-family: 'Lato';
 }
 
+p{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.text-success{
+    color:rgba(57, 211, 58, 1) !important;
+}
+
+.text-warning{
+    color:rgba(254, 212, 42, 1) !important;
+}
+
+.text-danger{
+    color:rgba(254, 0, 0, 1) !important;
+}
+
+
+rgba(254, 0, 0, 1) 0, rgba(254, 0, 0, 1) 33%, rgba(254, 212, 42, 1) 33%, rgba(254, 212, 42, 1) 66%, rgba(57, 211, 58, 1) 66%, rgba(57, 211, 58, 1) 100%);
+
+
 
 /* Font-Family Style end */
 
 
-/* navbar + header start */
+/* NAVBAR + Header start */
 
 .header-main > .row {
     margin: 0;
@@ -170,7 +192,15 @@ p, li:not(.nav-item) {
 
 
 
+.navbar-nav .dropdown-item:active,
+.navbar-nav .dropdown-item:focus{
+   background-color: white;
+}
 
+.navbar-nav .dropdown-item.active{
+   background-color: white;
+    color:black;
+}
 
 @media (min-width: 768px) {
     .navbar-custom .dropdown:hover > .dropdown-menu {
@@ -202,7 +232,7 @@ p, li:not(.nav-item) {
 
     .navbar-custom .dropdown-presentation{
         background-color: hsl(0, 100%, 67%);
-        border-radius:0 0px 5px 5px;
+        border-radius:0 2.5px 5px 5px;
         border-left:1px solid hsl(0, 100%, 67%);
         border-right:1px solid hsl(0, 100%, 67%);
         border-top:none;
@@ -231,7 +261,7 @@ p, li:not(.nav-item) {
     
     .navbar-custom .dropdown-handicapable{
         background-color: hsl(203, 89%, 56%);
-        border-radius:0px 5px 5px 5px;
+        border-radius:0px 2.5px 5px 5px;
         border-left:1px solid hsl(203, 89%, 56%);
         border-right:1px solid hsl(203, 89%, 56%);
         border-top:none;
@@ -256,10 +286,13 @@ p, li:not(.nav-item) {
         border-bottom:none;
     }
     
+    #dropdown04{
+        height: 100%;
+    }
+    
     }
 
 
-    
     
     .navbar-custom .dropdown-item:hover,
     .navbar-custom .dropdown-item:focus {
@@ -279,17 +312,22 @@ p, li:not(.nav-item) {
         transition: all .8s ease;
     }
     
+    .nav-item.active .fa-home{
+        background-color: black;
+        border-radius: 3px;
+        color:white;
+        padding:3px;
+        transform: scale(1.2)
+    }
  
     .navbar-custom .nav-item:nth-child(1):hover .nav-link .fas {
 
         /*background: linear-gradient(to right, rgba(0, 0, 255, .7) 0, rgba(0, 0, 255, .7) 33.33%, rgba(255, 255, 255, .7) 33.33%, rgba(255, 255, 255, .7) 66.66%, rgba(255, 0, 0, .7) 66.66%, rgba(255, 0, 0, .7) 100%);
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;*/
-        transform: scale(1.5);
+        transform: scale(1.2);
         transition: transform .8s ease;
     }
-
-
 
 
     .navbar-custom .nav-item.active:nth-child(2) .nav-link,
@@ -331,7 +369,7 @@ p, li:not(.nav-item) {
         color: black;
     }
 
-}
+
 
 @media (max-width: 767px) {
 
@@ -343,21 +381,23 @@ p, li:not(.nav-item) {
     .navbar-toggler-icon {
         width: 25px;
     }
-    .dropdown-wombere {
+    
+    .dropdown-item{
+        font-size:.9em;
+    }
+    
+    .dropdown-item{
         text-align: center;
     }
 
 .dropdown .nav-link::after {
     content: "\00a0\00a0 \f150";
     font-family: Font Awesome\ 5 Free;
-    font-weight: 600
+    font-weight: 100
 }
-   
-   
-
 }
 
-/* ANIMATED UP ARROW on xs */
+/* ANIMATED UP ARROW on xs start*/
 
 .navbar-light .navbar-toggler-icon {
     transition: all .5s ease-out;
@@ -370,54 +410,58 @@ p, li:not(.nav-item) {
 
 }
 
-/* andof ANIMATED UP ARROW */
+/* ANIMATED UP ARROW end*/
 
-@media (min-width:986px) {
-    /*scrollbar fun */
+
+/*scrollbar fun start */
+@media (min-width:830px) {
+    
     .scroll-progress-container {
         background-color: transparent;
         height: 3px;
-        left: -1em;
+        left: -.5em;
         position: absolute;
-        top: 3.55em;
+        top: 3.35em;
         width: 100%;
-        
-
     }
 
     .scroll-progress {
-
-        background-image: linear-gradient(to right, #FE0000 0, #FE0000 33%, #FED42A 33%, #FED42A 66%, #39D33A 66%, #39D33A 100%);
+        background-image: linear-gradient(to right, rgba(254, 0, 0, .95) 0, rgba(254, 0, 0, .95) 33%, rgba(254, 212, 42, .95) 33%, rgba(254, 212, 42, .95) 66%, rgba(57, 211, 58, .95) 66%, rgba(57, 211, 58, .95) 100%);
         height: 3.5px;
         width: 0px;
     }
 }
 
-@media (min-width:450px) and (max-width:985.9px) {
+@media (max-width:829px) {
     .scroll-progress-container {
-        background-color: white;
+        background-color: transparent;
         height: 3px;
-        left: -1em;
+        left: 0em;
         position: absolute;
-        top: 5.17em;
-        width: 101%;
+        top: 5em;
+        width: 102%;
 
     }
 
     .scroll-progress {
-
         background-image: linear-gradient(to right, #FE0000 0, #FE0000 33%, #FED42A 33%, #FED42A 66%, #39D33A 66%, #39D33A 100%);
         height: 3.5px;
         width: 0px;
     }
 }
 
-/*scrollbar fun close */
+/*scrollbar fun end*/
 
 /* Fin navbar end*/
 
 
 /* components on multi pages (ex: HR / ) start */
+
+/* iframe responsive */
+iframe, object, embed {
+        max-width: 100%;
+        max-height: 100%;
+}
 
 hr{
     width:80%;
@@ -427,7 +471,7 @@ hr{
 
 .hr-guinea-flag{
        background-image: linear-gradient(to bottom, rgba(254, 0, 0, .8) 0, rgba(254, 0, 0, .8) 33.33%, rgba(254, 212, 42, .8) 33.33%, rgba(254, 212, 42, .8) 66.66%, rgba(57, 211, 58, .8) 66.66%, rgba(57, 211, 58, .8) 100%);
-        height: 3em; 
+        height: 2em; 
 }
 
 .hr-guinea-flag-small{
@@ -448,11 +492,178 @@ hr{
 /* components on multi pages (ex: HR / ) end */
 
 
+/* bugfix general (AOS, ...) start*/
+    /* class tinymce problem */
+        figcaption{
+            text-align: center;
+        }
+
+
+/* bugfix general end*/
+
+
 /*****************************
     Page Accueil Wombere start
 *****************************/
 
-/* Main Intro start */
+/* Loader gif - Icone chargement à la premiere visite start */
+
+.preload-icon {
+    background-color: white;
+    font-size:1.5em;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	z-index: 99999999;
+    position: fixed;
+}
+
+.preload-icon .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.preload-icon .bubblingG {
+	text-align: center;
+	width:390px;
+	height:244px;
+	margin: auto;
+}
+
+.preload-icon .bubblingG span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	margin: 122px auto;
+	background: rgb(18,227,21);
+	border-radius: 244px;
+		-o-border-radius: 244px;
+		-ms-border-radius: 244px;
+		-webkit-border-radius: 244px;
+		-moz-border-radius: 244px;
+	animation: bubblingG 1.235s infinite alternate;
+		-o-animation: bubblingG 1.235s infinite alternate;
+		-ms-animation: bubblingG 1.235s infinite alternate;
+		-webkit-animation: bubblingG 1.235s infinite alternate;
+		-moz-animation: bubblingG 1.235s infinite alternate;
+}
+
+.preload-icon #bubblingG_1 {
+	animation-delay: 0s;
+		-o-animation-delay: 0s;
+		-ms-animation-delay: 0s;
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+}
+
+.preload-icon #bubblingG_2 {
+	animation-delay: 0.3695s;
+		-o-animation-delay: 0.3695s;
+		-ms-animation-delay: 0.3695s;
+		-webkit-animation-delay: 0.3695s;
+		-moz-animation-delay: 0.3695s;
+}
+
+.preload-icon #bubblingG_3 {
+	animation-delay: 0.739s;
+		-o-animation-delay: 0.739s;
+		-ms-animation-delay: 0.739s;
+		-webkit-animation-delay: 0.739s;
+		-moz-animation-delay: 0.739s;
+}
+
+
+
+@keyframes bubblingG {
+	0% {
+		width: 40px;
+		height: 40px;
+		background-color:rgb(255,0,26);
+		transform: translateY(0);
+	}
+
+	100% {
+		width: 100px;
+		height: 100px;
+		background-color:rgb(242,226,8);
+		transform: translateY(-102px);
+	}
+}
+
+@-o-keyframes bubblingG {
+	0% {
+		width: 40px;
+		height: 40px;
+		background-color:rgb(255,0,26);
+		-o-transform: translateY(0);
+	}
+
+	100% {
+		width: 100px;
+		height: 100px;
+		background-color:rgb(242,226,8);
+		-o-transform: translateY(-102px);
+	}
+}
+
+@-ms-keyframes bubblingG {
+	0% {
+		width: 40px;
+		height: 40px;
+		background-color:rgb(255,0,26);
+		-ms-transform: translateY(0);
+	}
+
+	100% {
+		width: 100px;
+		height: 100px;
+		background-color:rgb(242,226,8);
+		-ms-transform: translateY(-102px);
+	}
+}
+
+@-webkit-keyframes bubblingG {
+	0% {
+		width: 40px;
+		height: 40px;
+		background-color:rgb(255,0,26);
+		-webkit-transform: translateY(0);
+	}
+
+	100% {
+		width: 100px;
+		height: 100px;
+		background-color:rgb(242,226,8);
+		-webkit-transform: translateY(-102px);
+	}
+}
+
+@-moz-keyframes bubblingG {
+	0% {
+		width: 40px;
+		height: 40px;
+		background-color:rgb(255,0,26);
+		-moz-transform: translateY(0);
+	}
+
+	100% {
+		width: 100px;
+		height: 100px;
+		background-color:rgb(242,226,8);
+		-moz-transform: translateY(-102px);
+	}
+}
+
+
+/* Icone chargement end */
+
+
+/* SLIDER UNIVERSEL start */
 
 
 .slider-container .carousel{
@@ -461,11 +672,13 @@ hr{
     max-height: 500px;
 }
 
-.slider-container-admin .carousel{
-    max-height: 250px;
-}.slider-container-admin .carousel-item{
-    max-height: 250px;
+/* other idea 
+.slider-container .carousel-item img{
+     max-height: 500px;
+  min-width: auto;
 }
+*/
+
 
 
 .slider-container .carousel-control-prev,
@@ -483,10 +696,37 @@ hr{
 .slider-container-admin .carousel-caption {
         background-color: rgba(0,0,0,.7);
         left:100px;
-        max-width:20%;
+        width:20%;
            position: absolute;
+    word-wrap: break-word;
 }
 
+
+/* A REVOIR SLIDER RESPONSIVE */
+
+@media (max-width:1199px) {
+    .slider-container .carousel{
+    max-height:400px;
+}.slider-container .carousel-item{
+    max-height:400px;
+}
+
+
+@media (max-width:991px) {
+    .slider-container .carousel{
+    max-height:350px;
+}.slider-container .carousel-item{
+    max-height:350px;
+}
+}
+
+@media (max-width:767px) {
+    .slider-container .carousel{
+    max-height:250px;
+}.slider-container .carousel-item{
+    max-height:250px;
+}
+}
 
 
 
@@ -498,12 +738,26 @@ hr{
 }
 }
 
-/* Main Intro end */
+
+}
+
+/* SLIDER UNIVERSEL end */
 
 
 
 /* PROJET homepage start */
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
 
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+
+}
 
 
 @media (min-width: 1800px) {
@@ -525,7 +779,6 @@ hr{
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     display: block;
-    line-height: 1.42857143;
     margin-bottom: 20px;
     transition: box-shadow .25s;
 }
@@ -544,13 +797,13 @@ hr{
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     display: block;
-    max-height: 220px;
+    max-height: 300px;
     overflow: hidden;
 }
 
 @media (min-width: 1200px) {
     .projet-mainpage .img-card {
-        height: 220px;
+        height: 300px;
 
     }
 }
@@ -704,10 +957,84 @@ border-radius: 0px;
 
 /**************** 
 PAge Accueil Wombere end
-****************/
+******************************/
 
 
 
+/*****************************
+    QUI SOMMESS-NOUS page start
+******************************/
+@media screen and (max-width: 480px) {
+.qui-sommes-nous p{
+    padding: 10px ;
+}
+}
+
+ /* NOTRE HISTOIRE start */
+.style_image_bgc .main{
+    background-size: cover; 
+    background-position: center;
+}
+
+.style_image_bgc  .text{
+    background: rgba(255,255,255,.93);
+}
+
+@media (max-width: 991px) {
+    .style_image_bgc .main {
+          background-image: linear-gradient(to bottom right, rgba(254, 0, 0, .8) 0, rgba(254, 0, 0, .8) 33.33%, rgba(254, 212, 42, .8) 33.33%, rgba(254, 212, 42, .8) 66.66%, rgba(57, 211, 58, .8) 66.66%, rgba(57, 211, 58, .8) 100%) !important;
+        
+}
+}
+
+/* Notre histoire end */
+
+
+
+/* L'EQUIPE start */
+
+.equipe .admin img{
+    width:200px;
+    height: 200px;
+}
+
+.team-guinee img{
+    width:200px;
+    height: 200px;
+}
+.benevole img{
+    width:200px;
+    height: 200px;
+}
+
+/* L'EQUIPE end */
+
+
+/*****************************
+    QUI SOMMESS-NOUS page end
+******************************/
+
+
+
+/*****************************
+    Wombere France page start
+******************************/
+
+
+/*****************************
+    Wombere France page end
+******************************/
+
+
+
+/*****************************
+    Wombere Guinée page start
+******************************/
+
+
+/*****************************
+    Wombere Guinée page end
+******************************/
 
 
 
@@ -733,12 +1060,12 @@ PAge Accueil Wombere end
 
 
 @media (min-width:1200px) {
-    .handicapable_presentation .paralax {
-        background: url(../img/fond.png) no-repeat center center;
+   /* .handicapable_presentation .paralax {
+        background: url(../img/Troupe-Handicapable.jpg) no-repeat center center;
         background-size: contain;
         background-position: top;
        
-    }
+    }*/
 
     .handicapable_presentation p {
         font-size: 1em;

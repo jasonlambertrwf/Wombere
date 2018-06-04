@@ -21,7 +21,7 @@ $req_modif=$db->query("SELECT * FROM wb_slider_img WHERE id_slider_img = $id_img
 // UPDATE INTO db
 if($_POST){
        
-        $texte = htmlentities($_POST['texte']);
+        $texte = stripslashes($_POST['texte']);
         $page = htmlentities($_POST['page']);
         $id = intval($_POST['id']);
         
@@ -120,20 +120,20 @@ if($_POST){
                 
                     <div class="row">
                    <div class="col-7 pr-5">
-                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
                    
                     <div class="form-group">
                        
                         <label for="image_projet" class="h4 text-success">Image de l'actualité</label>
-                        <input type="file" name="image" class="form-control-file" id="image_projet">
+                        <input type="file" name="image" class="form-control-file input-file" id="image_projet" data-max-size="1048576">
                         
                         
                     </div>
                    
                    
                     <div class="form-group mt-4">
-                        <label for="titre" class="h4 text-success"> Titre de la présentation du projet *</label>
-                        <input type="text" name="texte" class="form-control" id="titre" value="<?= $slider["texte_slider_img"] ?>" required>
+                        <label for="contenu" class="h4 text-success"> Texte du slider</label>
+                        <textarea name="texte" class="form-control" id="contenu" rows="1"><?= $slider["texte_slider_img"] ?></textarea>
                     </div>
 
                    <input type="hidden" name="page" value="accueil">
@@ -171,10 +171,10 @@ if($_POST){
 
 
 
-<!-- script start -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
 
+<?php
+    require_once '../includes/footer_admin.php';
+    ?>
     </body>
 
     </html>

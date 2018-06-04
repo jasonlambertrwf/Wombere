@@ -124,24 +124,24 @@ if($_POST){
                 
                     <div class="row">
                    <div class="col-7 pr-5">
-                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
                    
                    
                     <div class="form-group">
                         <label for="image" class="h4 text-success">Logo du partenaire</label>
-                        <input type="file" name="image" class="form-control-file" id="image" > 
+                        <input type="file" name="image" class="form-control-file input-file" id="image" data-max-size="1048576"> 
                     </div>
                     
                    
                    
                     <div class="form-group mt-4">
-                        <label for="site" class="h4 text-success"> Adresse du site web du partenaire *</label>
+                        <label for="site" class="h4 text-success"> Adresse du site web du partenaire</label>
                         <input type="text" name="site" class="form-control" id="site" value="<?= $partenaires["site_partenaire"] ?>" required>
                     </div>
                        
                        
                        <div class="form-group mt-4">
-                        <label for="titre" class="h4 text-success"> Nom du partenaire *</label>
+                        <label for="titre" class="h4 text-success"> Nom du partenaire</label>
                         <input type="text" name="nom" class="form-control" id="titre" value="<?= $partenaires["nom_partenaire"] ?>" required>
                     </div>
 
@@ -183,9 +183,9 @@ if($_POST){
 
 
 
-<!-- script start -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
+<?php
+    require_once '../includes/footer_admin.php';
+    ?>
 
     </body>
 

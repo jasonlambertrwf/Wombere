@@ -1,11 +1,18 @@
-RewriteEngine on
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+  RewriteBase /
 
-# Rewrite /foo/bar to /foo/bar.php
-# RewriteRule ^([^.?]+)$ %{REQUEST_URI}.php [L]
+RewriteCond %{THE_REQUEST} \.(?:html|php)\s [NC]
+RewriteCond %{REQUEST_URI} !=/error404.html
+RewriteRule ^ - [R=404,L]
 
-# Return 404 if original request is /foo/bar.php
-# RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
-# RewriteRule .* - [L,R=404]
 
-# NOTE! FOR APACHE ON WINDOWS: Add [NC] to RewriteCond like this:
-# RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$" [NC]
+
+# Remove .php-extension from url
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.php -f
+  RewriteRule ^([^\.]+)/$ $1.php 
+
+# End of Apache Rewrite Rules
+ </IfModule>

@@ -27,88 +27,93 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
 </head>
 <body class="qui-sommes-nous">
    
+    <h1 class="position-absolute" style="top:-1500px;">Qui sommes-nous? Présentation association Wombere - France Guinée</h1>
    
     <?php
     require_once 'includes/header.php';
     require_once 'includes/slider.php';
     ?>
 
-
-  
-                           <!-- ANCHOR INSIDE hr flag start -->
-    <div class="w-100 invisible hr-guinea-flag"></div>
-    <!-- HR FLAG end -->
     
        
    
-    <!-- NOS VALEURS  -->
-    <section id="nos-valeurs" class="style_simple my-5">
+    <!-- NOS VALEURS start -->
+    
       
                   <?php
                     $titre = "nos valeurs";
-                    $req->bindParam(':titre_section', $titre);
+                    $req->bindParam('titre_section', $titre, PDO::PARAM_STR);
                     $req->execute();
-                    while($row = $req->fetch(PDO::FETCH_OBJ)) {
+                    $row = $req->fetch(PDO::FETCH_OBJ)
                     ?>
                     
+       <section id="<?php 
+                        $result = $row->titre_section;
+                        $anchor=str_replace(str_split(' \'\_]'), '-',strtolower($result));
+                        echo $anchor;
+                    ?>" class="my-5">
        <h2 class="h1 text-left w-75 mx-auto text-success text-capitalize mb-3"><?= $row->titre_section; ?></h2>
         
         <div class="container">
             <div class="row">
-                <div>
-                  
+                  <div class="text-justify px-2">
                     
                    <div class="d-none d-lg-block float-lg-left mr-5" style="width:420px;">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
-                    <div class="col-12 d-block d-lg-none mr-3">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <div class="col-12 text-center d-block d-lg-none mr-3">
+                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
-                    <p class="text-justify"><?= $row->texte_main; ?></p>
+                    <p class="text-justify mt-3 mt-lg-0"><?= $row->texte_main; ?></p>
                     
-                    
-                </div>
+                 </div>   
             </div>
         </div>
         
-                <?php
-                    }
+                <?php    
                     
                     unset($titre);
                     $req->closeCursor();
-                    ?>
+                ?>
                     
     </section>
        
+       <!-- NOS VALEURS end -->
        
        
-                           <!-- ANCHOR INSIDE hr flag start -->
+                           <!-- hr flag start -->
     <div class="w-100  hr-guinea-flag"></div>
     <!-- HR FLAG end -->
     
        
-       <!-- NOS OBJECTIFS -->
-       <section id="nos-objectifs" class="style_simple mt-5">
+    <!-- NOS OBJECTIFS start -->
+       
        <?php
                     $titre = "nos objectifs";
-                    $req->bindParam(':titre_section', $titre);
+                    $req->bindParam(':titre_section', $titre, PDO::PARAM_STR);
                     $req->execute();
-                    while($row = $req->fetch(PDO::FETCH_OBJ)) {
+                    $row = $req->fetch(PDO::FETCH_OBJ)
                     ?>
                     
+                    
+        <section id="<?php 
+                        $result = $row->titre_section;
+                        $anchor=str_replace(str_split(' \'\_]'), '-',strtolower($result));
+                        echo $anchor;
+                    ?>" class="my-5">
         <h2  class="h1 text-left w-75 mx-auto text-danger text-capitalize mb-3"><?= $row->titre_section; ?></h2>
         <div class="container">
             <div class="row">
-                <div>
+                <div class="text-justify px-2">
                    
-                   <div class="d-none d-lg-block float-lg-right ml-5" style="width:420px; height:360px;">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                   <div class="d-none d-lg-block float-lg-left ml-5" style="max-width:420px;">
+                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
-                    <div class="col-12 d-block d-lg-none mr-3">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <div class="col-12 text-center d-block d-lg-none mr-lg-3">
+                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify "><?= $row->texte_main; ?></p>
@@ -117,32 +122,38 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
             </div>
         </div>
          <?php
-                    }
-                    
+                    unset($result);
                     unset($titre);
                     $req->closeCursor();
                     ?>
     </section>
 
    
+    <!-- NOS OBJECTIFS end -->
     
-                           <!-- ANCHOR INSIDE hr flag  start -->
+                          
+                           <!-- hr flag  start -->
     <div class="w-100  hr-guinea-flag"></div>
     <!-- HR FLAG end -->
     
     
-     <!-- Nos moyens d'actions -->
-    <section id="nos-moyens-d-action" class="style_complexe my-5">
+    <!-- NOS MOYENS D'ACTION start -->
+    
       <?php
                     $titre = "nos moyens d'action";
-                    $req->bindParam(':titre_section', $titre);
+                    $req->bindParam(':titre_section', $titre, PDO::PARAM_STR);
                     $req->execute();
-                    while($row = $req->fetch(PDO::FETCH_OBJ)) {
+                    $row = $req->fetch(PDO::FETCH_OBJ)
                     ?>
                     
+        <section id="<?php 
+                        $result = $row->titre_section;
+                        $anchor=str_replace(str_split(' \'\_]'), '-',strtolower($result));
+                        echo $anchor;
+                    ?>" class="my-5">
        <h2 class="h1 text-left w-75 mx-auto text-success mb-3"><?= $row->titre_section; ?></h2>
         <div class="container pt-3">
-            <div class="row ">
+            <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="">
                         <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid rounded">
@@ -172,8 +183,6 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
             </div>
             
          <?php
-                    }
-                    
                     unset($titre);
                     $req->closeCursor();
                     ?>
@@ -181,28 +190,34 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
     </section>
     
     
+    <!-- Nos moyens d'actions end -->
     
     
-                           <!-- ANCHOR INSIDE hr flag start -->
+                           <!-- hr flag start -->
     <div class="w-100  hr-guinea-flag"></div>
     <!-- HR FLAG end -->
     
     
-        <!-- Notre histoire -->
+    <!-- NOTRE HISTOIRE start -->
         
         <?php
+                    // Je renseigne le titre de la section (resout problème d'ancre) + requete BDD 
                     $titre = "notre histoire";
-                    $req->bindParam(':titre_section', $titre);
+                    $req->bindParam(':titre_section', $titre, PDO::PARAM_STR);
                     $req->execute();
-                    while($row = $req->fetch(PDO::FETCH_OBJ)) {
+                    $row = $req->fetch(PDO::FETCH_OBJ)
                     ?>
                     
-    <section id="notre-histoire" class="style_image_bgc ">
+    <section class="style_image_bgc ">
        <div class="container-fluid">
         <div class=" main row" style="background-image: url(assets/img/<?= $row->img_main; ?>); ">
             <div class="col-12 col-lg-5 offset-lg-1 text p-sm-5 text-justify">
 
-                <h2 class="h1 pb-3 text-danger" data-aos="fade" data-aos-delay="0"><?= $row->titre_section; ?></h2>
+                <h2 id="<?php 
+                        $result = $row->titre_section;
+                        $anchor=str_replace(str_split(' \'\_]'), '-',strtolower($result));
+                        echo $anchor;
+                    ?>" class="h1 pb-3 text-danger" data-aos="fade" data-aos-delay="0"><?= $row->titre_section; ?></h2>
                 <p class=""><?= $row->texte_main; ?></p>
 
             </div>
@@ -229,34 +244,42 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
     
     
      <?php
-                    }
-                    
                     unset($titre);
                     $req->closeCursor();
                     ?>
     
+        <!-- Notre histoire end -->
     
     
-                           <!-- ANCHOR INSIDE hr flag start -->
+                           <!--  hr flag start -->
     <div class="w-100  hr-guinea-flag"></div>
     <!-- HR FLAG end -->
     
     
     
-     <!-- 3eme section l'equipe -->
+     <!-- L'EQUIPE start -->
     
 <section id="l-equipe" class="equipe my-5">
-   <h2  class="h1 text-center text-uppercase mb-5">L'équipe de wombere</h2>
+  <div class=" mb-5">
+  
+<h2 class="h1 text-center text-uppercase ">
+    <img src="assets/img/france-flag.svg" alt="" width="40" height="30" class="img-fluid "> 
+        &nbsp;L'équipe de wombere&nbsp;
+    <img src="assets/img/guinea-flag" alt="" width="40" height="30" class="img-fluid ">
+</h2>
+     </div>
+     
+      <hr>
+      
     <div class="container">
        
        <!-- AFFICHAGE Administrateur start -->
-        <div class="row admin">
-         <h3 class="h2 col-12 text-center my-5">Les fondateurs</h3>
+        <div class="row admin mb-5">
+         <h3 class="h2 col-12 text-center my-5 text-danger">Les fondateurs</h3>
           <?php
                     $organi = 'admin';
-                    $req_membre->execute(array(
-                                'organigramme' => $organi
-                            ));
+                    $req_membre->bindParam(':organigramme', $organi, PDO::PARAM_STR);
+                    $req_membre->execute();
                     $membres = $req_membre->fetchAll(PDO::FETCH_OBJ);
                     
                     foreach ($membres as $membre){
@@ -278,25 +301,25 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                     ?>
         </div>
          <!-- AFFICHAGE Administrateur end -->
+         
+         <hr>
        
        <!-- AFFICHAGE EQUIPE EN GUINNEE start -->
         <div class="team-guinee row text-center">
+            <div class="row">
+            <h3 class="h2 col-12 mt-5 text-warning">L'equipe en Guinée</h3>
+             <div class="col-8 offset-2 mb-5"><p>Wombere est une association qui agit en France mais surtout en Guinée. Notamment avec la troupe handicapable qui promeut l'entraide et sensibilise au handicap. <br>Voici l'équipe en Guinée.</p></div>
+            </div>
             
-            <h3 class="h2 col-12 my-5">L'equipe en Guinée</h3>
-
-           
-           
            <?php
                     $organi = 'membre_guinee';
-                    $req_membre->execute(array(
-                                'organigramme' => $organi
-                            ));
+                    $req_membre->bindParam(':organigramme', $organi, PDO::PARAM_STR);
+                    $req_membre->execute();
                     $membres = $req_membre->fetchAll(PDO::FETCH_OBJ);
-                    
                     foreach ($membres as $membre){
                     ?>
                     
-            <div class="col-lg-3 col-md-4 col-xs-6">  
+            <div class="col-lg-3 col-md-4 col-xs-6 mb-2">  
             <img class="img-fluid img-thumbnail" src="assets/img/equipe/<?= $membre->img_membre ?>" alt=""><p class="text-capitalize"><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
             </div>
             
@@ -307,18 +330,19 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                     ?>
         </div>
          <!-- AFFICHAGE EQUIPE EN GUINNEE end -->
+         
+         <hr>
         
         <!-- AFFICHAGE BENEVOLE & PARRAIN start -->
         
         <div class="benevole row text-center">
-              <h3 class="col-12 mt-5">Nos bénévoles et nos parrains</h3>
-               <div class="col-8 offset-2 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae earum eligendi, nam facere totam, dolorum rem ea maiores sit officia ut, perspiciatis, maxime vero nesciunt architecto id laudantium eum saepe!</div>
+              <h3 class="col-12 mt-5 text-success">Nos bénévoles et nos parrains</h3>
+               <div class="col-8 offset-2 mb-5"><p>Nous tenons à remercier tout particulièrement nos bénévoles et nos parrains qui, tous les jours, avec le sourire et l'envie d'améliorer notre monde, nous aident à faire évoluer la société, les mentalités et donner de l'espoir. Merci encore à eux.</p></div>
                
              <?php
                     $organi = 'benevole-parrain';
-                    $req_membre->execute(array(
-                                'organigramme' => $organi
-                            ));
+                    $req_membre->bindParam(':organigramme', $organi, PDO::PARAM_STR);
+                    $req_membre->execute();
                     $membres = $req_membre->fetchAll(PDO::FETCH_OBJ);
                     
                     foreach ($membres as $membre){
@@ -349,7 +373,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
 
  
 
-    
+    <!-- l'equipe end -->
 
     
      

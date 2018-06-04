@@ -6,12 +6,12 @@
 
 <footer>
     <div class="footer py-5">
-        <div class="container">
-            <div class="row w-75 mx-auto">
-                <div class="col-8 col-md-12">
-                    <div class="row">
+        <div class="container-fluid">
+            <div class="row w-100 mx-auto text-center">
+                <div class="col-12">
+                    <div class="row justify-content-center">
                         <div class="col-12 col-md-3 my-1">
-                            <p><a href="#" class="text-uppercase text-white">&copy; WOMBERE 2006 - <?php echo date('Y'); ?></a></p>
+                            <p><a href="#" class="text-uppercase text-white">&copy;&nbsp;WOMBERE&nbsp;2006&nbsp;-&nbsp;<?php echo date('Y'); ?></a></p>
                         </div>
                         <div class="col-12 col-md-3 my-1">
                             <p><a href="#" class="text-uppercase text-white">NOUS CONTACTER</a></p>
@@ -24,9 +24,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 offset-1 d-block d-md-none">
+                <div class="col-12 d-block d-md-none">
                     <div class="row h-100 justify-content-center align-items-center">
-                        <div class="social-logo col-6 offset-3 d-flex flex-column justify-content-center align-self-center ">
+                        <div class="social-logo col-6 offset-3 d-flex justify-content-center align-self-center mx-auto">
                             <a href=""><i class="fab fa-facebook-square fa-2x mr-2"></i></a>
                             <a href=""><i class="fab fa-twitter-square fa-2x mr-2"></i></a>
                             <a href=""><i class="fab fa-youtube-square fa-2x"></i></a>

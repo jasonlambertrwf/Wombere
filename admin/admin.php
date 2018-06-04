@@ -11,7 +11,7 @@ require __DIR__."/config/db.php";
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Espace Admin - Wombere</title>
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,7 @@ require __DIR__."/config/db.php";
 <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 <!-- Custom styles for this template -->
-    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
    
@@ -37,29 +37,28 @@ require __DIR__."/config/db.php";
         ?>
         
         
-        
-          <div class="" style="position:fixed;left:10px; top:0; z-index:9999">
-           <p>
-  <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Mode d'emploi et Rappel
+        <!-- button Mode d'emploi et deconnexion start -->
+<div class="" style="position:fixed;left:5px; top:5px; z-index:9999">
+    <p>
+        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="collapse" data-target="#mode-emploi" aria-expanded="false" aria-controls="collapseExample">
+    Mode d'emploi et rappel 
   </button>
-</p>
-<div class="collapse text-white border border-white" id="collapseExample">
-  <div class="card card-body bg-dark">
-    <ul>
-        <li class="py-2"></li>
-        <li class="py-2">Pour uploader des fichiers PDF, rendez-vous sur <a href="">ce site</a> ou bien encore <a href="">ce site</a> pour ainsi uploader le PDF et ensuite insérer le lien dans un article au choix à l'aide de la balise "Lien" dans l'editeur de texte.</li>
-        <li class="py-2">Il est conseillé de compresser les images avant de les uploader. <a href="">Ici</a> ou bien <a href="">Ici</a> vous pouvez retrouver des sites internet qui permettent de le faire facilement.</li>
-        <li class="py-2">N'oubliez pas, de temps à autre, de nettoyer le contenu du dossier Image du serveur et supprimer les photos inutilisées grace au bouton "Nettoyer le dossier image" situé en bas de page</li>
-    </ul>
-  </div>
+    </p>
+    <div class="collapse text-white border border-white" id="mode-emploi">
+        <div class="card card-body bg-dark">
+            <ul>
+                <li class="py-2"><b>Il est conseillé de compresser les images avant de les uploader.</b> <br>Vous pouvez retrouver des sites internets qui permettent de le faire facilement, par ex : <a href="http://resizeimage.net/" target="_blank" class="badge badge-light">ResizeImage (rogner et compresser)</a> ou bien <a href="http://optimizilla.com/" target="_blank" class="badge badge-light">OptimiZilla (seulement pour compresser)</a></li>
+                <li class="py-2"><b>Pour uploader des fichiers PDF</b>: <br> Rendez-vous sur <a href="https://www.docdroid.net/" target="_blank" class="badge badge-light">Docdroid</a> ou bien encore sur <a href="https://fr.scribd.com/upload-document" target="_blank" class="badge badge-light">Scribd</a> pour ainsi uploader le PDF. <br>Ensuite copier le lien obtenu. Puis l'insérer dans un article au choix à l'aide de la balise "Lien" dans l'editeur de texte.</li>
+                <li class="py-2"><b>N'oubliez pas, de temps à autre, de nettoyer le contenu du dossier 'Image' du serveur et de supprimer les photos inutilisées grace au bouton "Nettoyer le dossier image" situé en bas de page</b></li>
+            </ul>
+        </div>
+    </div>
 </div>
-        </div> 
-         
-          <div class="" style="position:fixed;right:10px; top:0">
-        <a href="logout.php" class="btn btn-warning">Se Deconnecter</a>
-    </div>  
-       
+
+<div class="" style="position:fixed;right:5px; top:5px">
+    <a href="logout.php" class="btn btn-warning">Se Deconnecter</a>
+</div>
+         <!-- button Mode d'emploi et deconnexion end -->
  
       
       
@@ -68,7 +67,7 @@ require __DIR__."/config/db.php";
        <div class="text-center mt-3">
                <img src="../assets/img/Logo-Wombere.png" alt="" class="img-fluid">          
         </div>
-        <h1 class="text-center my-3">Bienvenue sur l'espace d'administration <?= $_SESSION['login'] ?></h1>
+        <h1 class="text-center my-3">Bonjour <span class="text-capitalize"><?= $_SESSION['login'] ?></span> et bienvenue sur l'espace d'administration </h1>
         </header>
         
         <hr>
@@ -81,7 +80,7 @@ require __DIR__."/config/db.php";
                     <small>( Selectionnez la section désirée ci-dessous )</small>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="accueil/slider_accueil.php" class="btn btn-info w-100 text-truncate">Slider d'images principal</a>
+                    <a href="accueil/slider_accueil.php" class="btn btn-info w-100 text-truncate">"Slider d'images principal"</a>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
                     <a href="accueil/projets_presentation.php" class="btn btn-info w-100 text-truncate">"Presentation des projets"</a>
@@ -118,7 +117,7 @@ require __DIR__."/config/db.php";
                     <a href="qui-sommes-nous/qui-sommes-nous.php#notre-histoire" class="btn btn-light w-100 w-md-50">"Notre histoire"</a>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="qui-sommes-nous/qui-sommes-nous.php#l-equipe" class="btn btn-light w-100 w-md-50">L'Equipe</a>
+                    <a href="qui-sommes-nous/qui-sommes-nous.php#l-equipe" class="btn btn-light w-100 w-md-50">"L'Equipe"</a>
                 
                 
                 
@@ -128,23 +127,61 @@ require __DIR__."/config/db.php";
     </div>
         
         
-        <div class="container mb-5">
+        <div id="wombere-france-guinee" class="container mb-5">
           <div class="row text-center">
                 <div class="col-12 my-5">
                     <h2>Modifier la page "Wombere France"</h2>
                     <small>( Selectionnez la section désirée ci-dessous )</small>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Cours"</a>
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-france#1" class="btn btn-info w-100 text-truncate">"Cours"</a>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Ateliers en établissement spé"</a>
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-france#2" class="btn btn-info w-100 text-truncate">"Ateliers en établissement spé"</a>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Evenements"</a>
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-france#3" class="btn btn-info w-100 text-truncate">"Evenements"</a>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
-                    <a href="wombere-france/" class="btn btn-info w-100 text-truncate">"Galerie de photos"</a>
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-france#autre" class="btn btn-info w-100 text-truncate">"Autre (si autre)"</a>
+                </div>
+            </div>     
+        </div>
+         
+         
+         
+          <div id="qui-sommes-nous" class="bg-dark">
+    <div class="container py-5 ">
+          <div class="row text-center justify-content-center">
+                <div class="col-12 text-white mb-5">
+                    <h2>Modifier la page "Wombere Guinée"</h2>
+                    <small>( Selectionnez la section désirée ci-dessous )</small>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-guinee#4" class="btn btn-info w-100 text-truncate">"Eco-lieu"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-guinee#5" class="btn btn-info w-100 text-truncate">"Troupe Handicapable"</a>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-guinee#6" class="btn btn-info w-100 text-truncate">"Découverte de la guinée et de son art"</a>
+                </div>
+                 <div class="col-12 col-md-6 mt-4">
+                    <a href="wombere-france-guinee/wombere-france-guinee.php?page=wombere-france#autre" class="btn btn-info w-100 text-truncate">"Autre (si autre)"</a>
+                </div>
+            </div>     
+        </div>
+    </div>
+    
+    
+    <div id="festisol" class="container mb-5">
+          <div class="row text-center">
+                <div class="col-12 my-5">
+                    <h2>Modifier la page "Festisol"</h2>
+                    <small>( Selectionnez la section désirée ci-dessous )</small>
+                </div>
+                <div class="col-12 col-md-6 offset-3 mt-4">
+                    <a href="festisol/festisol.php?page=wombere-france" class="btn btn-info w-100 text-truncate">"Modifier"</a>
                 </div>
             </div>     
         </div>
@@ -160,5 +197,6 @@ require __DIR__."/config/db.php";
     <!-- script start -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/custom-script.js"></script>
 </body>
 </html>

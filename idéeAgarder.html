@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+    /* TEST SVG Handi presentation layout start*/
+
+    
+
+.description-handi .separator {
+  width: 1600px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"%3E%3Cpolygon fill="transparent" points="0 100 0 0 100 0"/%3E%3Cpolygon fill="%23FFF" points="100 -500 100 100 45 100"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+    
+}
+
+.description-handi {
+    
+    background-image: url(assets/img/ensemble.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top
+}
+
+@media (max-width:992px){
+  .description-handi {
+    
+    background-image: url(assets/img/Musique%20est%20universelle.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top
+}  
+}
+        
+        
+/* TEST SVG Handi presentation layout end*/
+    
+    </style>
+</head>
+<body>
+   
+   
+   <!-- TEST SVG Handi presentation layout start -->
+   
+    <div class="container-fluid">
+     <section class="row my-5 description-handi">
+       
+        <div class="separator">
+            <div class="row justify-content-end">
+                <div class="col-7 offset-5 col-xl-6 offset-xl-6 text-center text-dark">
+                <h4 class="h2 ml-auto py-4">Les Mains ont la parole</h4>
+                <p class="w-75 pr-5 ml-auto text-left">
+            Le projet Handicapable a été initialisé à Conakry, en République de Guinée. <br><br>Dans le cadre de ce projet l'association Wombere mène des actions aussi bien en France qu'en Guinée. Le projet vise à créer du lien entre les deux cultures. Le fil conducteur de cette aventure humaine est le tournage du documentaire «Handicapable» par Billy Touré en Guinée et Laurent chevalier en France. Aujourd'hui en Guinée Conakry le projet vise à la professionnalisation d'artistes ayant un handicap moteur et à la sensibilisation au handicap. <br><br>La troupe Handicapable est ainsi née. Les 14 artistes qui la composent sont originaires de 3 groupes ethniques Guinéens différents: les sousous, les malenkés et les peuls. <br><br>Elle se compose de 6 musiciens et de 8 danseurs. Dans les rues de Guinée il n'est pas rare de voir des personnes en situation de handicap moteur dans les rues, la troupe d'artistes démontrent à travers leur art que le regard sur le handicap peut/doit changer. La mise en place d'une résidence d'artistes située à 40km de la capitale facilite la formation de la troupe. Les artistes, les 2 formateurs et la cuisinère sont logés sur place. <br><br>Leur quotidien est rythmé par les 2 répétitions journalières durant lesquelles ils répètent le spectacle «handicap'art» qu'ils donnent en représentations. Le spectacle composé de rythmes traditionnels Guinéens (djembé, doundoumba et kryn) raconte le quotidien parfois difficile des personnes en situation de handicap en Guinée.<br><br> Ils content la faim, le rejet et la différence avec humour et délicatesse à travers des saynètes théâtrales, des morceaux traditionnels et des arrangements. La troupe Handicapable mène également des actions de sensibilisation dans les écoles Guinéenes.<br><br> Une discussion sur le handicap est organisée entre les élèves et une intervenante des clubs unesco, avec comme supports, un flyer de sensibilsation et un dvd traitant du handicap en france.<br><br> Dans un second temps, les artistes présentent des extraits du spectacle «Handicap'art» puis la rencontre se fait. Quand le spectacle prends fin les enfants tout d'abord interpellés sont émerveillés des capacités des artistes, c'est une réelle prise de conscience.
+
+        </p></div>
+            </div>
+        </div>
+       
+      </section>
+    </div>
+      
+      <!-- FIN TEST SVG Handi presentation layout end -->
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////// PARTIE PRESENTATION PROJET 
+
+
+
+
+
+<!-- save 
+
+
+
+
+
+
+ <div class="container-fluid mt-3">
+           <div class="row justify-content-center">
+            <?php
+               
+               if((($num_of_results % 3) == 0) OR (($num_of_results % 2) == 1)){  // si le nbre de resultat est x3 et/ou impair => echo md-4 ?> 
+                         
+                         
+                           <div class="w-75">
+                         <div class="row justify-content-center">
+                         
+                          <?php foreach ($projets as $projet): ?>
+                       
+                       
+                          <div class="col-12 col-md-4 mt-3">
+                       <div class="card">
+                            <div class="img-card text-center d-flex justify-content-center align-items-center">
+                            <img src="assets/img/<?= $projet->projet_image ?>" class="img-fluid my-auto" />
+                             <!--<div class="img-card text-center d-flex justify-content-center align-items-center">
+                            <div class="img-bgc" style="background-image:url(assets/img/<?//= $projet->projet_image ?>)"></div>-->
+                          </div>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <p> <?= $projet->projet_titre ?>
+                                  </p>
+                                </h4>
+                                <p><?= $projet->projet_contenu  ?></p>
+                            </div>
+                            <div class="card-read-more">
+                                <a href="projet.php/?p=<?= $projet->id_projet ?>" class="btn btn-link btn-block">
+                                    Lire plus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                   
+                       
+                       <?php 
+                        
+                        endforeach ;
+                        
+                        $req_projet->closeCursor();
+                        ?>  
+                        </div>
+                      </div>
+                        </div>
+                      </div> 
+                   
+                   
+                   
+                <?php }elseif(($num_of_results % 2) == 0){  // si le nbre de resultat est pair => echo md-6 ?> 
+                         
+                         <div class="col-12 col-md-10">
+                          <div class="row mx-auto">
+                          
+                          <?php foreach ($projets as $projet): ?>
+                       
+                        
+                          <div class="col-12 col-md-6">
+                           <div class="card">
+                            <div class="img-card text-center d-flex justify-content-center align-items-center" style="max-height:200px;">
+                            <img src="assets/img/<?= $projet->projet_image ?>" class="img-fluid my-auto" />
+                          </div>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <p> <?= $projet->projet_titre ?>
+                                  </p>
+                                </h4>
+                                <p><?= $projet->projet_contenu  ?></p>
+                            </div>
+                            <div class="card-read-more">
+                                <a href="projet.php/?p=<?= $projet->id_projet ?>" class="btn btn-link btn-block">
+                                    Lire plus
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                   
+                       
+                       <?php 
+                        
+                        endforeach ;
+                        
+                        unset($num_of_results);
+                        $req_projet->closeCursor();
+                                                          
+                        ?>  
+                        
+                        </div>
+                      </div> 
+                                                          
+                    <?php
+                                                           
+                        } 
+                    ?>
+                       
+    
+        
+    </section>
+               

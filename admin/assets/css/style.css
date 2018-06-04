@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6{
     font-family:'Fresca' !important
 }
 span,
-p, li:not(.nav-item) {
+p, li:not(.nav-item    ) {
     font-family: 'Lato';
 }
 
@@ -39,7 +39,28 @@ p, li:not(.nav-item) {
 /* Font-Family Style end */
 
 
+.hr-guinea-flag{
+    height: 2em
+}
+
 /* ADMIN start */
+
+/*admin slider sur page Accueil*/
+.slider-container-admin .carousel{
+    max-height: 500px;
+}.slider-container-admin .carousel-item{
+    max-height: 500px;
+}
+
+.dropdown-toggle[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+}
+
+
+/*for the animation*/
+.dropdown-toggle:after {
+  transition: 0.5s;
+}
 
 hr{
     height: 12px; border: 0; box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
@@ -52,6 +73,10 @@ hr{
 
  /* tinymce start */
 
+#mceu_24{
+   z-index:3 
+}
+
 #tinymce{
     padding:10px;
     
@@ -59,7 +84,7 @@ hr{
 
 .mce-label.mce-charactercount{
   margin: 2px 0 2px 2px
-  padding: 8px
+  padding: 8px;
   font-size: 12px
 }
 
@@ -71,6 +96,15 @@ iframe, object, embed {
         max-width: 100%;
         max-height: 100%;
 }
+
+figure.image
+
+figcaption{
+    width:
+            text-align: center;
+        }
+
+
  /* tinymce end */
 
 /* ADMIN end */

@@ -127,7 +127,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
                     <h2 class="h3">Image n°<?php echo $i ?></h2>
                     <div>
                       <img src="../../assets/img/slider/<?= $slider -> slider_img ?>" alt="" class="img-fluid img-thumbnail" style="max-height:200px;">
-                      <p class="text-center text-white w-25 position-absolute" style="background-color:rgba(0,0,0,.7); bottom:9em; font-size:.8em; left:2em"><?= $slider -> texte_slider_img ?></p> 
+                      <p class="text-center text-white mw-50 position-absolute" style="background-color:rgba(0,0,0,.8); bottom:8em; font-size:.8em; left:2em; word-warp:break-word"><?= $slider -> texte_slider_img ?></p> 
                     </div>  
               <div>
                                 <a href="slider_modif.php?p=<?= $slider -> id_slider_img ?>" class="btn btn-success mt-2 font-weight-bold">
@@ -244,16 +244,16 @@ if ((($_FILES["image"]["type"] == "image/gif")
                 <h3 class="h2 mb-5">Ajouter une image au slider : <br> <small>(N.B : L'image se retrouvera en 1ere position )</small></h3>
            
 
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="upload-form">
 
                    
                    <div class="form-group">
                         <label for="image_actu" class="h5 text-danger">Image du slider * (requise) </label>
-                        <input type="file" name="image" class="form-control-file" id="image_actu" required="required">
+                        <input type="file" name="image" class="form-control-file input-file" id="image_actu" data-max-size="1048576" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="titre" class="h5 mt-3">Texte associé *</label>
+                        <label for="titre" class="h5 mt-3 text-success">Texte associé *</label>
                         <textarea name="slider_texte" class="form-control" id="titre" rows="1"></textarea>
                     </div>
                     

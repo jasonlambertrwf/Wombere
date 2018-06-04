@@ -114,17 +114,7 @@ if($_POST){
        ?>
        
        
-        <header>
-        <div class="row text-center mt-3">
-           <div class="col-12 ">
-               <img src="../../assets/img/Logo-Wombere.png" alt="" class="logo img-fluid">
-           </div>
-            <div class="col-12">
-                <h1 class=" mt-3 mb-5">Espace de gestion de la page Qui sommes-nous ? - Section L'Equipe</h1>
-               
-            </div>
-        </div>
-        </header>
+   
 
              <hr>
              
@@ -150,7 +140,7 @@ if($_POST){
                     
                    
                     <div class="form-group">
-                        <label for="image" class="h4 text-success">Photo du membre</label>
+                        <label for="image" class="h4 text-success">Photo du membre [Format conseillé : 200x200]</label>
                         <input type="file" name="image" class="form-control-file input-file" id="image" data-max-size="1048576"> 
                     </div>
         

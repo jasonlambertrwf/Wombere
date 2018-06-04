@@ -9,6 +9,10 @@ $req=$db->prepare("SELECT * FROM wb_qui_sommes_nous WHERE titre_section = :titre
 // affichage image de l'equipe
 $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigramme ORDER BY nom_membre ");
 	
+// initialisation du Chemin pour image (general)
+$path = "assets/img/";
+    // pour image equipe (specifique à cette page)
+$path_equipe = "assets/img/equipe/"; 
 
 ?>
 
@@ -59,11 +63,11 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                   <div class="text-justify px-2">
                     
                    <div class="d-none d-lg-block float-lg-left mr-5" style="width:420px;">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class="col-12 text-center d-block d-lg-none mr-3">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify mt-3 mt-lg-0"><?= $row->texte_main; ?></p>
@@ -109,11 +113,11 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                 <div class="text-justify px-2">
                    
                    <div class="d-none d-lg-block float-lg-left ml-5" style="max-width:420px;">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class="col-12 text-center d-block d-lg-none mr-lg-3">
-                    <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify "><?= $row->texte_main; ?></p>
@@ -156,7 +160,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
             <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="">
-                        <img src="assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid rounded">
+                        <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid rounded">
                     </div>
                 </div>
                 <div class="col-lg-8  col-12">
@@ -166,8 +170,8 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                 <hr class="my-4">
                 
                     <div class="col-lg-4 col-12  mt-2">
-                        <img src="assets/img/<?= $row->img_secondaire; ?>" alt="" class="img-fluid rounded mb-4">
-                        <img src="assets/img/<?= $row->img_ternaire; ?>" alt="" class="img-fluid rounded">
+                        <img src="<?= $path . $row->img_secondaire; ?>" alt="" class="img-fluid rounded mb-4">
+                        <img src="<?= $path . $row->img_ternaire; ?>" alt="" class="img-fluid rounded">
                     </div>
                     <div class="col-lg-4 col-12">
                         <h3 class="h2 pt-4 pt-lg-0 text-success"><?= $row->titre_secondaire; ?></h3>
@@ -210,7 +214,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                     
     <section class="style_image_bgc ">
        <div class="container-fluid">
-        <div class=" main row" style="background-image: url(assets/img/<?= $row->img_main; ?>); ">
+        <div class=" main row" style="background-image: url(<?= $path . $row->img_main; ?>); ">
             <div class="col-12 col-lg-5 offset-lg-1 text p-sm-5 text-justify">
 
                 <h2 id="<?php 
@@ -229,7 +233,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
     
     <section class="style_image_bgc mt-2">
        <div class="container-fluid">
-        <div class=" main row" style="background-image: url(assets/img/<?= $row->img_secondaire; ?>);">
+        <div class=" main row" style="background-image: url(<?= $path . $row->img_secondaire; ?>);">
             <div class="col-12 col-lg-5 offset-lg-6 text p-sm-5 text-justify">
 
                 <h2 class="h1 pb-3 text-success" data-aos="fade" data-aos-delay="0"><?= $row->titre_secondaire; ?></h2>
@@ -263,9 +267,9 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
   <div class=" mb-5">
   
 <h2 class="h1 text-center text-uppercase ">
-    <img src="assets/img/france-flag.svg" alt="" width="40" height="30" class="img-fluid "> 
+    <img src="assets/img/permanent/france-flag.svg" alt="" width="40" height="30" class="img-fluid "> 
         &nbsp;L'équipe de wombere&nbsp;
-    <img src="assets/img/guinea-flag" alt="" width="40" height="30" class="img-fluid ">
+    <img src="assets/img/permanent/guinea-flag" alt="" width="40" height="30" class="img-fluid ">
 </h2>
      </div>
      
@@ -289,7 +293,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
             <div class="col-6">
                 <h3 class="h5 text-capitalize"><?= $membre->nom_membre ?></h3>
                 <div class="float-left mr-3">
-                    <img src="assets/img/equipe/<?= $membre->img_membre ?>" alt="" class="img-fluid ">
+                    <img src="<?= $path_equipe . $membre->img_membre ?>" alt="" class="img-fluid ">
                 </div>
                 <p class="p-2"><?= $membre->role_membre ?></p>
             </div>
@@ -320,7 +324,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                     ?>
                     
             <div class="col-lg-3 col-md-4 col-xs-6 mb-2">  
-            <img class="img-fluid img-thumbnail" src="assets/img/equipe/<?= $membre->img_membre ?>" alt=""><p class="text-capitalize"><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
+            <img class="img-fluid img-thumbnail" src="<?= $path_equipe . $membre->img_membre ?>" alt=""><p class="text-capitalize"><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
             </div>
             
            <?php
@@ -351,7 +355,7 @@ $req_membre=$db->prepare("SELECT * FROM wb_equipe WHERE organigramme = :organigr
                     
             <div class="col-lg-3 col-md-4 col-xs-6">
             
-            <img class="img-fluid img-thumbnail" src="assets/img/equipe/<?= $membre->img_membre ?>" alt=""><p><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
+            <img class="img-fluid img-thumbnail" src="<?= $path_equipe . $membre->img_membre ?>" alt=""><p><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
             </div>
             
             

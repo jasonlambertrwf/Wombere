@@ -6,7 +6,11 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 
 require '../config/db.php';
 
-    
+
+    // initialisation du Chemin pour image (general)
+$path = "../../assets/img/qui-sommes-nous/";
+    // pour image equipe (specifique à cette page)
+$path_equipe = "../../assets/img/equipe/"; 
      
       // Requete préparée
 $req=$db->prepare("SELECT * FROM wb_qui_sommes_nous WHERE titre_section = :titre_section" );
@@ -47,7 +51,7 @@ if($_POST){
     $uploadName = $_FILES['image']['name'];
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/equipe/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path_equipe.$nom_image);
    
 }
         }else {
@@ -133,11 +137,11 @@ if($_POST){
                   
                     
                    <div class="d-none d-lg-block float-lg-left mr-5" style="width:420px;">
-                    <img src="../../assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid  ">
                     </div>
                     
                     <div class="col-12 d-block d-lg-none mr-3">
-                    <img src="../../assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid  ">
                     </div>
                     
                     <p class="text-justify"><?= $row->texte_main; ?></p>
@@ -181,7 +185,7 @@ if($_POST){
                 <div>
                    
                    <div class="d-none d-lg-block float-lg-right ml-5" style="width:420px; height:360px;">
-                    <img src="../../assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid  ">
+                    <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid  ">
                     </div>
                     
                     <div class="col-12 d-block d-lg-none mr-3">
@@ -225,7 +229,7 @@ if($_POST){
             <div class="row ">
                 <div class="col-lg-4 col-12">
                     <div class="">
-                        <img src="../../assets/img/<?= $row->img_main; ?>" alt="" class="img-fluid rounded">
+                        <img src="<?= $path . $row->img_main; ?>" alt="" class="img-fluid rounded">
                     </div>
                 </div>
                 <div class="col-lg-8  col-12">
@@ -235,8 +239,8 @@ if($_POST){
                 <hr class="my-4">
                 
                     <div class="col-lg-4 col-12  mt-2">
-                        <img src="../../assets/img/<?= $row->img_secondaire; ?>" alt="" class="img-fluid rounded mb-4">
-                        <img src="../../assets/img/<?= $row->img_ternaire; ?>" alt="" class="img-fluid rounded">
+                        <img src="<?= $path . $row->img_secondaire; ?>" alt="" class="img-fluid rounded mb-4">
+                        <img src="<?= $path . $row->img_ternaire; ?>" alt="" class="img-fluid rounded">
                     </div>
                     <div class="col-lg-4 col-12">
                         <h3 class="h2 pt-4 pt-lg-0 text-success"><?= $row->titre_secondaire; ?></h3>
@@ -282,7 +286,7 @@ if($_POST){
                     
     <section id="notre-histoire" class="style_image_bgc ">
        <div class="container-fluid">
-        <div class=" main row" style="background-image: url(../../assets/img/<?= $row->img_main; ?>); background-size:cover; ">
+        <div class=" main row" style="background-image: url(<?= $path . $row->img_main; ?>); background-size:cover; ">
             <div class="col-12 col-lg-5 offset-lg-1 text p-sm-5 text-justify bg-white">
 
                 <h2 class="h1 pb-3 text-danger" data-aos="fade" data-aos-delay="0"><?= $row->titre_section; ?></h2>
@@ -297,7 +301,7 @@ if($_POST){
     
     <section class="style_image_bgc mt-2 mb-5">
        <div class="container-fluid">
-        <div class=" main row" style="background-image: url(../../assets/img/<?= $row->img_secondaire; ?>); background-size:cover;">
+        <div class=" main row" style="background-image: url(<?= $path . $row->img_secondaire; ?>); background-size:cover;">
             <div class="col-12 col-lg-5 offset-lg-6 text p-sm-5 text-justify bg-white">
 
                 <h2 class="h1 pb-3 text-success" data-aos="fade" data-aos-delay="0"><?= $row->titre_secondaire; ?></h2>
@@ -418,12 +422,12 @@ if($_POST){
             <div class="col-6">
                 <h3 class="h5 text-capitalize"><?= $membre->nom_membre ?></h3>
                 <div class="float-left mr-3">
-                    <img src="../../assets/img/equipe/<?= $membre->img_membre ?>" alt="" class="img-fluid" style="width:200px; height:200px;">
+                    <img src="<?= $path_equipe . $membre->img_membre ?>" alt="" class="img-fluid" style="width:200px; height:200px;">
                 </div>
                 <p class="p-2"><?= $membre->role_membre ?></p>
                 <a href="qui-sommes-nous-modif-equipe.php?id_membre=<?= $membre->id_membre ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
                             <br>
-                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>&img=<?= $membre->img_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
             </div>
            
             
@@ -453,10 +457,10 @@ if($_POST){
                     ?>
                     
             <div class="col-lg-3 col-md-4 col-xs-6">  
-            <img class="img-fluid img-thumbnail" src="../../assets/img/equipe/<?= $membre->img_membre ?>" alt="" style="width:200px; height:200px;"><p class="text-capitalize"><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
+            <img class="img-fluid img-thumbnail" src="<?= $path_equipe . $membre->img_membre ?>" alt="" style="width:200px; height:200px;"><p class="text-capitalize"><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
             <a href="qui-sommes-nous-modif-equipe.php?id_membre=<?= $membre->id_membre ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
                             <br>
-                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>&img=<?= $membre->img_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
             
             </div>
             
@@ -468,14 +472,15 @@ if($_POST){
         </div>
          <!-- AFFICHAGE EQUIPE EN GUINNEE end -->
         
-        <!-- AFFICHAGE BENEVOLE & PARRAIN start -->
+        
+        <!-- AFFICHAGE MARRAINE start -->
         
         <div class="benevole row text-center">
-              <h3 class="col-12 mt-5">Nos bénévoles et nos parrains</h3>
+              <h3 class="col-12 mt-5">Nos bénévoles</h3>
                <div class="col-8 offset-2 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae earum eligendi, nam facere totam, dolorum rem ea maiores sit officia ut, perspiciatis, maxime vero nesciunt architecto id laudantium eum saepe!</div>
                
              <?php
-                    $organi = 'benevole-parrain';
+                    $organi = 'parrain';
                     $req_membre->execute(array(
                                 'organigramme' => $organi
                             ));
@@ -487,10 +492,10 @@ if($_POST){
                     
             <div class="col-lg-3 col-md-4 col-xs-6">
             
-            <img class="img-fluid img-thumbnail" src="../../assets/img/equipe/<?= $membre->img_membre ?>" alt="" style="width:200px; height:200px;"><p><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
+            <img class="img-fluid img-thumbnail" src="<?= $path_equipe . $membre->img_membre ?>" alt="" style="width:200px; height:200px;"><p><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
             <a href="qui-sommes-nous-modif-equipe.php?id_membre=<?= $membre->id_membre ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
                             <br>
-                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>&img=<?= $membre->img_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
             </div>
             
             
@@ -505,7 +510,47 @@ if($_POST){
                    
                     
         </div>
-        <!-- AFFICHAGE BENEVOLE & PARRAIN end -->
+        <!-- AFFICHAGE MARAINNE end -->
+        
+        
+        <!-- AFFICHAGE BENEVOLE start -->
+        
+        <div class="benevole row text-center">
+              <h3 class="col-12 mt-5">Nos bénévoles</h3>
+               <div class="col-8 offset-2 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae earum eligendi, nam facere totam, dolorum rem ea maiores sit officia ut, perspiciatis, maxime vero nesciunt architecto id laudantium eum saepe!</div>
+               
+             <?php
+                    $organi = 'benevole';
+                    $req_membre->execute(array(
+                                'organigramme' => $organi
+                            ));
+                    $membres = $req_membre->fetchAll(PDO::FETCH_OBJ);
+                    
+                    foreach ($membres as $membre){
+                    ?>
+                    
+                    
+            <div class="col-lg-3 col-md-4 col-xs-6">
+            
+            <img class="img-fluid img-thumbnail" src="<?= $path_equipe . $membre->img_membre ?>" alt="" style="width:200px; height:200px;"><p><?= $membre->nom_membre ?> <br> <?= $membre->role_membre ?></p>
+            <a href="qui-sommes-nous-modif-equipe.php?id_membre=<?= $membre->id_membre ?>" class="w-50 btn btn-info btn-lg mt-3">Modifier </a>
+                            <br>
+                <a href="qui-sommes-nous-delete.php?id_membre=<?= $membre->id_membre ?>&img=<?= $membre->img_membre ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+            </div>
+            
+            
+            
+             <?php
+                    }
+                    unset($organi);
+                    $req_membre->closeCursor();
+                    ?>
+                    
+                    
+                   
+                    
+        </div>
+        <!-- AFFICHAGE BENEVOLE end -->
         
     </div>
 </section>

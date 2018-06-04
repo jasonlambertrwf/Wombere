@@ -15,7 +15,17 @@ require '../config/db.php';
         $req->execute(); 
 
         $req->closeCursor; 
-    }    
+    }
+    
+    
+    // delete image from folder
+    $old_image = htmlentities($_GET['img']);
+    $path = "../../assets/img/wombere-france-guinee/";
+    $filename =  $path . "/" . $old_image; // build the full path here
+    if (file_exists($filename)) {
+        unlink($filename);
+        echo 'File ' . $filename . ' has been deleted';
+    } 
 
 header("Location: wombere-france-guinee.php");
     exit();

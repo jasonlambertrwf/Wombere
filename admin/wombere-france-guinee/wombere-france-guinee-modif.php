@@ -6,8 +6,13 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/wombere-france-guinee/";
+    
 
-$id_section = intval($_GET['p']);
+// Recuperation $_GET parametre    
+    $id_section = intval($_GET['p']);
     $page = $_GET['page'];
     
  // affichage données
@@ -51,6 +56,17 @@ if($_POST){
 
     move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
     
+           // delete old image    
+          if (array_key_exists('old_image', $_POST)) {   
+              $old_image = htmlentities($_POST['old_image']);
+              $filename =  $path . "/" . $old_image;
+              if (file_exists($filename)) {
+                  unlink($filename);
+                  echo 'File '.$filename.' has been deleted';
+              } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+              }
+          }
           
     $sql ="UPDATE wb_wombere_france_guinee SET titre_section = :titre_section, contenu_section = :contenu_section, img_section = :img_section, page = :page WHERE id_section = :id_section";
           
@@ -137,13 +153,16 @@ if($_POST){
                     
                     <div class="form-group">
                         <label for="contenu" class="h4 text-success">Contenu de la présentation du projet *</label>
-                        <textarea name="contenu" class="form-control" id="contenu" rows="10"><?= $section->contenu_section ?></textarea>
+                        <textarea name="contenu" class="form-control" id="contenu"><?= $section->contenu_section ?></textarea>
                     </div>
 
 
-                    <input type="hidden" name="titre" class="form-control" id="titre" value="<?= $section->titre_section ?>">
-                    <input type="hidden" name="page" class="form-control" id="titre" value="<?= $section->page ?>">
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $section->id_section ?>">
+                    <input type="hidden" name="titre" class="form-control" value="<?= $section->titre_section ?>">
+                    <input type="hidden" name="page" class="form-control" value="<?= $section->page ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?= $section->id_section ?>">
+                    
+                    <!-- original image name -->  
+                    <input type="hidden" name="old_image" class="form-control" value="<?= $section->img_section ?>">
                        
                     
                     <div class="control text-center mt-5">

@@ -6,6 +6,9 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/festisol/";
 
 
 $id_festisol = intval($_GET['p']);
@@ -26,6 +29,8 @@ if($_POST){
         $annee = htmlentities($_POST['annee']);
         $lien = htmlentities($_POST['lien']);
         $id = intval($_POST['id']);
+    
+        
         
     
     
@@ -41,14 +46,28 @@ if($_POST){
             if (is_uploaded_file($_FILES['image']['tmp_name']) === false) {
                     throw new \Exception('Error on upload: Invalid file definition');
             }
-
+   
+          
     // Rename the uploaded file
     $uploadName = $_FILES['image']['name'];
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
-    // Insert it into our tracking along with the original name
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
+    
+          
+    // delete old image    
+          if (array_key_exists('old_image', $_POST)) {   
+              $old_image = htmlentities($_POST['old_image']);
+              $filename =  $path . "/" . $old_image;
+              if (file_exists($filename)) {
+                  unlink($filename);
+                  echo 'File '.$filename.' has been deleted';
+              } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+              }
+          }
+          
           
     $req = $db->prepare("UPDATE wb_festisol SET titre_festisol = :titre_festisol, contenu_festisol = :contenu_festisol, img_festisol = :img_festisol, annee_festisol = :annee_festisol, lien_site_festisol = :lien_site_festisol WHERE id_festisol = :id_festisol");
         $update = $req->execute([
@@ -104,7 +123,7 @@ if($_POST){
        
         require_once '../includes/function.php';
        
-        buttonReturn('projets_presentation.php');
+        buttonReturn('festisol.php');
        
         headerAdmin ('Espace de gestion de la page Accueil - Modification des projets');
     
@@ -155,11 +174,13 @@ if($_POST){
                        
                        
                     <div class="form-group">
-                        <label for="lien" class="h4 text-success"> Lien menant au site officiel de Festisol *</label>
-                        <input type="text" name="lien" class="form-control" id="lien" value="<?= $festisol["lien_site_festisol"] ?>" required>
+                        <label for="lien" class="h4 text-success"> Lien menant au site officiel de Festisol (optionnel)</label>
+                        <input type="text" name="lien" class="form-control" id="lien" value="<?= $festisol["lien_site_festisol"] ?>">
                     </div>
 
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $festisol["id_festisol"] ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?= $festisol["id_festisol"] ?>">
+                      
+                    <input type="hidden" name="old_image" class="form-control" value="<?= $festisol["img_festisol"] ?>">  
                        
                     
                     <div class="control text-center mt-5">
@@ -168,7 +189,7 @@ if($_POST){
                     </form>
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
-                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $festisol["img_festisol"] ?>" alt="" class="img-fluid ">
+                         <p class="mt-4">Image originale</p><img src="<?= $path . $festisol["img_festisol"] ?>" alt="" class="img-fluid ">
                          
                     </div>
                     </div>

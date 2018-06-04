@@ -9,13 +9,16 @@
   selector: 'textarea',
   language: 'fr_FR',
   resize: 'both',
+  autoresize_max_height: 20000,
+  autoresize_bottom_margin: 0,
+  autoresize_overflow_padding: 10,
   min_width: 200,
   forced_root_block : false, // Espace key = br a la place d'un new <p>
   paste_data_images : false, // empeche le drag & drop image 
   link_title: false, // enleve l'option Title du Link-Toolbar
   menubar: false,
   plugins: [
-    'advlist autolink lists image link charmap hr print preview anchor textcolor colorpicker charactercount',
+    'advlist autolink autoresize lists image link charmap hr print preview anchor textcolor colorpicker charactercount',
     'searchreplace visualblocks code fullscreen lineheight',
     'insertdatetime media contextmenu paste imagetools code help '
   ],

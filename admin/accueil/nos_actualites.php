@@ -6,6 +6,10 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 
 
 require '../config/db.php';
+    
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/accueil/actu/";
 
 
 //Traitement du formulaire d'ajout d'actualité start
@@ -35,7 +39,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
     // Insert it into our tracking along with the original name
 }
         
@@ -156,7 +160,7 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
                     <small><?= $actus->actu_date_creation ?></small>
                     <div class="row">
                         <div class="col-lg-4 my-auto">
-                            <img src="../../assets/img/<?= $actus->actu_image ?>" alt="" class="img-news img-fluid">
+                            <img src="<?= $path . $actus->actu_image ?>" alt="" class="img-news img-fluid">
                         </div>
                         <div class="col-lg-8">
                             <p>
@@ -165,7 +169,7 @@ $req_actu=$db->query("SELECT * FROM wb_actu ORDER BY id_actu DESC");
                         </div>
                         <div class="col-8 offset-4  col-xl-4 offset-xl-8 mt-1">
                             <a href="nos_actualites_modif.php?p=<?= $actus->id_actu ?>" class="btn btn-info">Modifier cette actualité</a>
-                            <a href="nos_actualites_delete.php?p=<?= $actus->id_actu ?>" class="btn btn-danger mt-3 mt-sm-0 ml-sm-2" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                            <a href="nos_actualites_delete.php?p=<?= $actus->id_actu ?>&img=<?= $actus->actu_image ?>" class="btn btn-danger mt-3 mt-sm-0 ml-sm-2" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
                         </div>
                     </div>
                 </div>

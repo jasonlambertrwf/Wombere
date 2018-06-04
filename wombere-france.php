@@ -2,13 +2,21 @@
 
 require("admin/config/db.php");
 
+// initialisation du Chemin pour image (general)
+$path = "assets/img/wombere-france-guinee/";
+
+
+
 // Requete préparée
 $req=$db->prepare("SELECT * FROM wb_wombere_france_guinee WHERE titre_section = :titre_section AND page = 'wombere-france'");
 
 
 // Requete pour ajout de nouvel section de l'admin
-$req_section=$db->query("SELECT * FROM wb_wombere_france_guinee WHERE page = 'wombere-france' LIMIT 3,8000");
+$req_section=$db->query("SELECT * FROM wb_wombere_france_guinee WHERE page = 'wombere-france' LIMIT 3,1000");
 	$section=$req_section->fetchAll(PDO::FETCH_OBJ);
+
+
+
 ?>
 
 
@@ -53,11 +61,11 @@ $req_section=$db->query("SELECT * FROM wb_wombere_france_guinee WHERE page = 'wo
             <div class="row">
                 <div>  
                    <div class="d-none d-lg-block float-lg-left mr-5" style="max-width:420px;">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class=" d-block d-lg-none mb-3 text-center">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify"><?= $row->contenu_section ?></p>
@@ -107,11 +115,11 @@ $req_section=$db->query("SELECT * FROM wb_wombere_france_guinee WHERE page = 'wo
             <div class="row">
                 <div>  
                    <div class="d-none d-lg-block float-lg-left mr-5" style="max-width:420px;">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class="col-12 d-block d-lg-none mb-3 text-center">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify"><?= $row->contenu_section ?></p>
@@ -157,11 +165,11 @@ $req_section=$db->query("SELECT * FROM wb_wombere_france_guinee WHERE page = 'wo
             <div class="row">
                 <div>  
                    <div class="d-none d-lg-block float-lg-left mr-5" style="max-width:420px;">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class="col-12 d-block d-lg-none mb-3 text-center">
-                    <img src="assets/img/<?= $row->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $row->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify"><?= $row->contenu_section ?></p>

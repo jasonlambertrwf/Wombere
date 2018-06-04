@@ -6,6 +6,10 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
+    
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/partenaires/";
 
 
 $id = intval($_GET['p']);
@@ -47,8 +51,21 @@ if($_POST){
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/partenaires/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
     
+          
+    // delete old image    
+          if (array_key_exists('old_image', $_POST)) {   
+              $old_image = htmlentities($_POST['old_image']);
+              $filename =  $path . "/" . $old_image;
+              if (file_exists($filename)) {
+                  unlink($filename);
+                  echo 'File '.$filename.' has been deleted';
+              } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+              }
+          }
+          
           
     $sql ="UPDATE wb_partenaires SET nom_partenaire = :nom_partenaire, img_partenaire = :img_partenaire, site_partenaire = :site_partenaire WHERE id_partenaire = :id_partenaire";
           
@@ -147,7 +164,9 @@ if($_POST){
 
                    
                     
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $partenaires["id_partenaire"] ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?= $partenaires["id_partenaire"] ?>">
+                    
+                    <input type="hidden" name="old_image" class="form-control" value="<?= $partenaires["img_partenaire"] ?>">
                     
                     <div class="control text-center mt-5">
                         <button type="submit" class="btn btn-success p-3">Modifier cette image et son texte</button>
@@ -156,7 +175,7 @@ if($_POST){
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
                          <p class="">Image originale</p>
-                         <img src="../../assets/img/partenaires/<?=  $partenaires["img_partenaire"] ?>" alt="" class="img-fluid w-25">
+                         <img src="<?= $path . $partenaires["img_partenaire"] ?>" alt="" class="img-fluid w-25">
                          
                     </div>
                     

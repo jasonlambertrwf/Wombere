@@ -104,7 +104,7 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
             
             <div class="card d-inline-block">
                 <div class="img-card text-center d-flex justify-content-center align-items-center">
-                    <img class="card-img-top img-fluid" src="assets/img/<?= $projet->projet_image ?>" alt="Image Project">
+                    <img class="card-img-top img-fluid" src="assets/img/accueil/projet/<?= $projet->projet_image ?>" alt="Image Project">
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">
@@ -157,7 +157,7 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
                         <small><?= $actu_top->actu_date_creation ?></small>
                         <div class="row">
                             <div class="col-12 col-lg my-auto">
-                                <img src="assets/img/<?= $actu_top->actu_image ?>" alt="" class="img-news img-fluid w-100">
+                                <img src="assets/img/accueil/actu/<?= $actu_top->actu_image ?>" alt="" class="img-news img-fluid w-100">
                             </div>
                             <div class="col-lg-7">
                                <div class="row w-100 h-100">
@@ -194,7 +194,7 @@ $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire
                         <small><?= $actu->actu_date_creation ?></small>
                         <div class="row">
                             <div class="col-lg-4 my-auto">
-                                <img src="assets/img/<?= $actu->actu_image ?>" alt="" class="img-news img-fluid d-block mx-auto">
+                                <img src="assets/img/accueil/actu/<?= $actu->actu_image ?>" alt="" class="img-news img-fluid d-block mx-auto">
                             </div>
                             <div class="col-lg-8">
                                <div class="row w-100 h-100">

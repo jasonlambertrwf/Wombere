@@ -7,6 +7,10 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 require '../config/db.php';
 
     
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/partenaires/";
+    
+    
     
     // affichage partenaire
 $req_partenaires=$db->query("SELECT * FROM wb_partenaires ORDER BY id_partenaire");
@@ -44,7 +48,7 @@ if($_POST){
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/partenaires/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
     // Insert it into our tracking along with the original name
 }
         }else {
@@ -123,12 +127,12 @@ if($_POST){
             <div class="col-6 col-sm-4 mt-4 mb-3 col-md-2 mt-lg-0 border">
             <div class="row h-100 my-2">
             <div class="col-6 mx-auto my-auto">
-        <a href="<?php if (is_null($partenaire->site_partenaire)){echo '#partenaires';}else{ echo $partenaire->site_partenaire;} ?>"><img class=" img-fluid img-thumbnail rounded" src="../../assets/img/partenaires/<?= $partenaire->img_partenaire ?>" alt="Partners_logo"></a>
+        <a href="<?php if (is_null($partenaire->site_partenaire)){echo '#partenaires';}else{ echo $partenaire->site_partenaire;} ?>"><img class=" img-fluid img-thumbnail rounded" src="<?= $path . $partenaire->img_partenaire ?>" alt="Partners_logo"></a>
         </div>
         <div class="col-12 text-center align-self-end mb-3">
                             <a href="partenaires_slider_modif.php?p=<?= $partenaire->id_partenaire ?>" class="w-50 btn btn-info mt-3">Modifier </a>
                             <br>
-                            <a href="partenaires_slider_delete.php?p=<?= $partenaire->id_partenaire ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                            <a href="partenaires_slider_delete.php?p=<?= $partenaire->id_partenaire ?>&img=<?= $partenaire->img_partenaire ?>" class="btn btn-danger btn-sm mt-1" onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
                         </div>
         </div>
     </div>

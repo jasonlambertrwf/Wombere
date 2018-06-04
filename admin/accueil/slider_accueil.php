@@ -6,6 +6,10 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 
 require '../config/db.php';
 
+    
+// initialisation du Chemin pour image (general)
+$path_slider = "../../assets/img/slider/";
+    
 
 // affichage image de fond principale
 $req_slider_img=$db->query("SELECT * FROM wb_slider_img WHERE slider_page ='accueil' ORDER BY id_slider_img DESC");
@@ -45,7 +49,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/slider/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path_slider.$nom_image);
     // Insert it into our tracking along with the original name
 }
         
@@ -126,14 +130,14 @@ if ((($_FILES["image"]["type"] == "image/gif")
                     
                     <h2 class="h3">Image n°<?php echo $i ?></h2>
                     <div>
-                      <img src="../../assets/img/slider/<?= $slider -> slider_img ?>" alt="" class="img-fluid img-thumbnail" style="max-height:200px;">
+                      <img src="<?= $path_slider . $slider -> slider_img ?>" alt="" class="img-fluid img-thumbnail" style="max-height:200px;">
                       <p class="text-center text-white mw-50 position-absolute" style="background-color:rgba(0,0,0,.8); bottom:8em; font-size:.8em; left:2em; word-warp:break-word"><?= $slider -> texte_slider_img ?></p> 
                     </div>  
               <div>
                                 <a href="slider_modif.php?p=<?= $slider -> id_slider_img ?>" class="btn btn-success mt-2 font-weight-bold">
                                     Modifier cette image et le texte du slider
                                 </a>
-                                <a href="slider_delete.php?p=<?= $slider -> id_slider_img ?>" class="btn btn-danger p-1 mt-2 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cette image du slider?')">Supprimer</a>
+                                <a href="slider_delete.php?p=<?= $slider -> id_slider_img ?>&img=<?= $slider->slider_img ?>" class="btn btn-danger p-1 mt-2 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cette image du slider?')">Supprimer</a>
                                 </div>
               </div>              
       </div>
@@ -188,7 +192,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
                         ?>
 
                         <div class="carousel-item  <?php if ($counter<=1) { echo 'active'; } ?>" style="max-height:250px;">
-                            <img class="d-block w-100" src="../../assets/img/slider/<?= $img->slider_img ?>" alt="First slide">
+                            <img class="d-block w-100" src="<?= $path_slider . $img->slider_img ?>" alt="First slide">
                             <div class="carousel-caption  d-none d-md-block" style="position:absolute; left:3em; max-width:25%;" >
                                 <h5 class="text-center px-1 bg-dark"><?= $img->texte_slider_img ?></h5>
 
@@ -254,7 +258,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
                     
                     <div class="form-group">
                         <label for="titre" class="h5 mt-3 text-success">Texte associé *</label>
-                        <textarea name="slider_texte" class="form-control" id="titre" rows="1"></textarea>
+                        <textarea name="slider_texte" class="form-control" id="titre"></textarea>
                     </div>
                     
                 

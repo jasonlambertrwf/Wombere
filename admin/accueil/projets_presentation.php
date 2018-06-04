@@ -5,6 +5,10 @@ session_start();
 if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 
 require '../config/db.php';
+    
+      
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/accueil/projet/";
 
 
 // affichage des projets - PRESENTATION
@@ -42,7 +46,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
     // Insert it into our tracking along with the original name
 }
         }else {
@@ -128,7 +132,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
                         <div class="col-12 col-md-4 col-lg-4">
                        <div class="card">
                             <div class="img-card text-center d-flex justify-content-center align-items-center" href="projet.php/?p=1">
-                            <img src="../../assets/img/<?= $projet->projet_image ?>" class="img-fluid my-auto" />
+                            <img src="<?= $path . $projet->projet_image ?>" class="img-fluid my-auto" />
                           </div>
                             <div class="card-content">
                                 <h4 class="card-title">
@@ -142,7 +146,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
                                     Modifier cette présentation
                                 </a>
                                 <br>
-                                <a href="projets_presentation_delete.php?p=<?= $projet->id_projet ?>" class="btn btn-danger btn-sm p-1 my-3 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                                <a href="projets_presentation_delete.php?p=<?= $projet->id_projet ?>&img=<?= $projet->projet_img ?>" class="btn btn-danger btn-sm p-1 my-3 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
                             </div>
                         </div>
                     </div>

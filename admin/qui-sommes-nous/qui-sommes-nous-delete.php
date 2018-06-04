@@ -17,10 +17,22 @@ require '../config/db.php';
         $req->closeCursor; 
     }
     
-
-header("Location: qui-sommes-nous.php#equipe");
+    
+    
+// delete image from folder
+    $old_image = htmlentities($_GET['img']);
+    $path = "../../assets/img/festisol/";
+    $filename =  $path . "/" . $old_image; // build the full path here
+    if (file_exists($filename)) {
+        unlink($filename);
+        echo 'File ' . $filename . ' has been deleted';
+    }
+    
+    
+// Redirection
+    header("Location: qui-sommes-nous.php#equipe");
     exit();
-
+    
 }
 
  ?>

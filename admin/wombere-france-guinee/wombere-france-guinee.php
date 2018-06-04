@@ -5,16 +5,20 @@ session_start();
 if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
 
 require '../config/db.php';
-
     
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/wombere-france-guinee/";
+    
+
+// recuperation $_GET page parametre
 $page = $_GET['page'];
    
      
-// Requete affichage
+// Requete affichage section
 $req=$db->prepare("SELECT * FROM wb_wombere_france_guinee WHERE page = :page");
      $req->bindParam('page', $page, PDO::PARAM_STR);
-                    $req->execute();
-	$sections=$req->fetchAll(PDO::FETCH_OBJ);
+     $req->execute();
+	 $sections=$req->fetchAll(PDO::FETCH_OBJ);
 
     
 
@@ -58,11 +62,11 @@ $req=$db->prepare("SELECT * FROM wb_wombere_france_guinee WHERE page = :page");
                 <div class="row"> 
                   <div> 
                    <div class="d-none d-lg-block float-lg-left mr-5" style="max-width:420px;">
-                    <img src="../../assets/img/<?= $section->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $section->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <div class="col-12 d-block d-lg-none mb-3 text-center">
-                    <img src="../../assets/img/<?= $section->img_section ?>" alt="" class="img-fluid">
+                    <img src="<?= $path . $section->img_section ?>" alt="" class="img-fluid">
                     </div>
                     
                     <p class="text-justify"><?= $section->contenu_section ?></p>
@@ -80,7 +84,7 @@ $req=$db->prepare("SELECT * FROM wb_wombere_france_guinee WHERE page = :page");
                                 <?php
                                     if(($section->id_section) > 6){
                                         ?>
-                                         <a href="wombere-france-guinee-delete.php?p=<?= $section->id_section ?>" class="btn btn-danger btn-sm p-1 my-3 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
+                                         <a href="wombere-france-guinee-delete.php?p=<?= $section->id_section ?>&img=<?= $section->img_section ?>" class="btn btn-danger btn-sm p-1 my-3 " onclick="return confirm('ATTENTION !!! \nÊtes-vous sûr de vouloir supprimer cet article?')">Supprimer</a>
                                         <?php
                                     }
                                         ?>

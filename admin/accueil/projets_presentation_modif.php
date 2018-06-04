@@ -6,6 +6,10 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
+    
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/accueil/projet/";
 
 
 $id_projet = intval($_GET['p']);
@@ -46,9 +50,23 @@ if($_POST){
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
-    // Insert it into our tracking along with the original name
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
+    
           
+     // delete old image    
+          if (array_key_exists('old_image', $_POST)) {   
+              $old_image = htmlentities($_POST['old_image']);
+              $filename =  $path . "/" . $old_image;
+              if (file_exists($filename)) {
+                  unlink($filename);
+                  echo 'File '.$filename.' has been deleted';
+              } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+              }
+          }
+          
+          
+        // Update  
     $req = $db->prepare("UPDATE wb_projet_presentation SET projet_titre = :projet_titre, projet_contenu = :projet_contenu, projet_image = :projet_image, projet_redirection = :projet_redirection WHERE id_projet = :id_projet");
         $update = $req->execute([
             'projet_titre' => $titre,
@@ -150,7 +168,9 @@ if($_POST){
                         <input type="text" name="redirection" class="form-control" id="redirect" value="<?= $projets["projet_redirection"] ?>" required>
                     </div>
 
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $projets["id_projet"] ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?= $projets["id_projet"] ?>">
+                      
+                    <input type="hidden" name="old_image" class="form-control" value="<?= $projets["projet_image"] ?>">
                        
                     
                     <div class="control text-center mt-5">
@@ -159,7 +179,7 @@ if($_POST){
                     </form>
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
-                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $projets["projet_image"] ?>" alt="" class="img-fluid ">
+                         <p class="mt-4">Image originale</p><img src="<?= $path . $projets["projet_image"] ?>" alt="" class="img-fluid ">
                          
                     </div>
                     </div>

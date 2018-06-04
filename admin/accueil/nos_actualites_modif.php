@@ -7,6 +7,9 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
+    
+// initialisation du Chemin pour image (general)
+$path = "../../assets/img/accueil/actu/";
 
 
 $id_actu = intval($_GET['p']);
@@ -54,8 +57,20 @@ if($_POST){
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
     $nom_image = round(microtime(true)).mt_rand().'.'.$ext;
 
-    move_uploaded_file($_FILES['image']['tmp_name'],'../../assets/img/'.$nom_image);
-    // Insert it into our tracking along with the original name
+    move_uploaded_file($_FILES['image']['tmp_name'],$path.$nom_image);
+    
+          
+    // delete old image    
+          if (array_key_exists('old_image', $_POST)) {   
+              $old_image = htmlentities($_POST['old_image']);
+              $filename =  $path . "/" . $old_image;
+              if (file_exists($filename)) {
+                  unlink($filename);
+                  echo 'File '.$filename.' has been deleted';
+              } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+              }
+          }
           
           
      
@@ -146,7 +161,9 @@ if($_POST){
                         
                     </div>
 
-                    <input type="hidden" name="id" class="form-control" id="titre" value="<?= $actu["id_actu"] ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?= $actu["id_actu"] ?>">
+                    
+                    <input type="hidden" name="old_image" class="form-control" value="<?= $actu["actu_image"] ?>">
                     
                     <div class="control text-center mt-5">
                         <button type="submit" class="btn btn-success p-3">Modifier cette actualité</button>
@@ -154,7 +171,7 @@ if($_POST){
                     </form>
                     </div>
                     <div class="col-5 border-left pl-5 text-center">
-                         <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $actu["actu_image"] ?>" alt="" class="img-fluid ">
+                         <p class="mt-4">Image originale</p><img src="<?= $path . $actu["actu_image"] ?>" alt="" class="img-fluid ">
                          
                     </div>
                     </div>

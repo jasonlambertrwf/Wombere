@@ -6,7 +6,11 @@ if ($_SESSION['admin'] === "administrateur" and !empty($_SESSION['login'])){
     
     
 require '../config/db.php';
-
+    
+    // initialisation du Chemin pour image (general)
+$path = "../../assets/img/qui-sommes-nous/";
+    
+    // recuperation $_GET parametre
 $id_section = intval($_GET['p']);
     
  // affichage données
@@ -30,6 +34,11 @@ $section=$req_section->fetch();
         $texte_deux = stripslashes($_POST['texte_deux']);
         $texte_trois = stripslashes($_POST['texte_trois']);
         $id = intval($_POST['id']);
+       
+       // Recupere nom_image orignal
+        $img_original1=htmlentities($_POST['image1_save']);
+        $img_original2=htmlentities($_POST['image2_save']);
+        $img_original3=htmlentities($_POST['image3_save']);
 
     
 // upload image 1 - si vide, on garde l'ancienne image de l'input hidden  
@@ -39,9 +48,16 @@ if (isset($_FILES["image1"]) && $_FILES["image1"]["error"] == UPLOAD_ERR_OK) {
         $uploadName = $_FILES['image1']['name'];
         $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
         $nom_image1 = round(microtime(true)).mt_rand().'.'.$ext;
-        move_uploaded_file($tmp_name,'../../assets/img/'.$nom_image1);
+        move_uploaded_file($tmp_name,$path.$nom_image1);
+    // delete old_image
+            $filename =  $path . "/" . $img_original1;
+            if (file_exists($filename)) {
+              unlink($filename);
+              echo 'File '.$filename.' has been deleted';
+            } else {
+              echo 'Could not delete '.$filename.', file does not exist';
+            }
         } else {
-        $img_original1=htmlentities($_POST['image1_save']);
         $nom_image1=$img_original1;
         }
  
@@ -54,9 +70,16 @@ if (isset($_FILES["image2"]) && $_FILES["image2"]["error"] == UPLOAD_ERR_OK) {
         $uploadName = $_FILES['image2']['name'];
         $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
         $nom_image2 = round(microtime(true)).mt_rand().'.'.$ext;
-        move_uploaded_file($tmp_name,'../../assets/img/'.$nom_image2);
+        move_uploaded_file($tmp_name,$path.$nom_image2);
+    // delete old_image
+            $filename =  $path . "/" . $img_original2;
+            if (file_exists($filename)) {
+              unlink($filename);
+              echo 'File '.$filename.' has been deleted';
+            } else {
+              echo 'Could not delete '.$filename.', file does not exist';
+            }
         } else {
-        $img_original2=htmlentities($_POST['image2_save']);
         $nom_image2=$img_original2;
         }
     
@@ -68,9 +91,16 @@ if (isset($_FILES["image3"]) && $_FILES["image3"]["error"] == UPLOAD_ERR_OK) {
         $uploadName = $_FILES['image3']['name'];
         $ext = strtolower(substr($uploadName, strripos($uploadName, '.')+1));
         $nom_image3 = round(microtime(true)).mt_rand().'.'.$ext;
-        move_uploaded_file($tmp_name,'../../assets/img/'.$nom_image3);
+        move_uploaded_file($tmp_name,$path.$nom_image3);
+    // delete old_image
+            $filename =  $path . "/" . $img_original3;
+            if (file_exists($filename)) {
+              unlink($filename);
+              echo 'File '.$filename.' has been deleted';
+            } else {
+              echo 'Could not delete '.$filename.', file does not exist';
+            }
         } else {
-        $img_original3=htmlentities($_POST['image3_save']);
         $nom_image3=$img_original3;
         }
     
@@ -161,9 +191,9 @@ if (isset($_FILES["image3"]) && $_FILES["image3"]["error"] == UPLOAD_ERR_OK) {
                     </div>
                     
                      <div class="form-group border border-secondary p-2">
-                        <label for="image" class="h4 text-success">Image Principale</label>
+                        <label for="image" class="h4 text-success">Sélectionner l'image Principale</label>
                         <input type="file" name="image1" class="form-control-file input-file" id="image"  data-max-size="1048576">
-                        <p class="mt-4 ">Image originale</p><img src="../../assets/img/<?=  $section["img_main"] ?>" alt="" class="img-fluid" style="max-height:200px;">
+                        <p class="mt-4 ">Image originale</p><img src="<?= $path . $section["img_main"] ?>" alt="" class="img-fluid" style="max-height:200px;">
                         <input type="hidden" name="image1_save" value="<?=  $section["img_main"] ?>">
                     </div>
 
@@ -189,9 +219,9 @@ if (isset($_FILES["image3"]) && $_FILES["image3"]["error"] == UPLOAD_ERR_OK) {
                     </div>
 
                     <div class="form-group border border-white p-2">
-                        <label for="image" class="h4 text-success">Image Secondaire</label>
+                        <label for="image" class="h4 text-success">Sélectionner l'image Secondaire</label>
                         <input type="file" name="image2" class="form-control-file input-file" id="image" data-max-size="1048576">
-                        <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $section["img_secondaire"] ?>" alt="" class="img-fluid w-25">
+                        <p class="mt-4">Image originale</p><img src="<?= $path . $section["img_secondaire"] ?>" alt="" class="img-fluid w-25">
                         <input type="hidden" name="image2_save" value="<?=  $section["img_secondaire"] ?>">
                     </div>
                     <?php
@@ -223,9 +253,9 @@ if (isset($_FILES["image3"]) && $_FILES["image3"]["error"] == UPLOAD_ERR_OK) {
                     </div>
 
                     <div class="form-group border border-secondary p-2">
-                        <label for="image" class="h4 text-success">Image de la 3eme partie</label>
+                        <label for="image" class="h4 text-success">Sélectionner l'image de la 3eme partie</label>
                         <input type="file" name="image3" class="form-control-file input-file" id="image" data-max-size="1048576">
-                        <p class="mt-4">Image originale</p><img src="../../assets/img/<?=  $section["img_ternaire"] ?>" alt="" class="img-fluid w-25">
+                        <p class="mt-4">Image originale</p><img src="<?= $path . $section["img_ternaire"] ?>" alt="" class="img-fluid w-25">
                         <input type="hidden" name="image3_save" value="<?=  $section["img_ternaire"] ?>">
                     </div>
                     <?php
